@@ -1,0 +1,20 @@
+{
+  "name": "aos-sched",
+  "version": "1.0.0",
+  "description": "Generic readtime scheduler simulation tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest lib/lib.test.js"
+  },
+  "author": "Vittorio Zaccaria",
+  "license": "MIT",
+  "dependencies": {
+    "caporal": "0.8.0",
+    "easy-table": "1.1.1",
+    "get-stdin": "5.0.1",
+    "jest": "29.6.4",
+    "lodash": "4.17.4",
+    "mz": "2.7.0",
+    "replace-ext": "1.0.0"
+  }
+}
