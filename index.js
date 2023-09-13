@@ -43,14 +43,8 @@ let main = () => {
     .action(({ logger, args, options }) => {
       let datap = args.json ? $fs.readFile(args.json, "utf8") : $gstd();
       datap.then(JSON.parse).then((sched) => {
-        let sim = sims[args.sched](options, sched, logger);
-        if (!_.isUndefined(options.latex)) {
-          console.log(
-            latex[args.sched](options, sim, logger)[options.latex].code
-          );
-        } else {
-          console.log(JSON.stringify(sim, null, 2));
-        }
+        let sim = sims[args.sched](options, sched, logger).simData;
+        console.log(JSON.stringify(sim, null, 2));
       });
     })
     .command("export", "Export simulation data to available formats")

@@ -64,7 +64,10 @@ Array [
         "start": 0,
         "sum": 0.5,
         "vrt": 100.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -78,7 +81,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 100.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -92,7 +98,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 0.5,
@@ -113,7 +122,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -127,7 +139,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 100.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -141,7 +156,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 1,
@@ -162,7 +180,10 @@ Array [
         "start": 0,
         "sum": 1.5,
         "vrt": 101.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -176,7 +197,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 100.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -190,7 +214,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 1.5,
@@ -211,7 +238,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 100.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -225,7 +255,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -240,7 +273,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 2,
@@ -261,7 +297,10 @@ Array [
         "start": 0,
         "sum": 0.5,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -275,7 +314,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -290,7 +332,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 2.5,
@@ -311,7 +356,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 101.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -325,7 +373,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -340,7 +391,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 3,
@@ -361,7 +415,10 @@ Array [
         "start": 0,
         "sum": 1.5,
         "vrt": 102,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -375,7 +432,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -390,7 +450,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 3.5,
@@ -411,7 +474,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -426,7 +492,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -441,7 +510,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 4,
@@ -462,7 +534,10 @@ Array [
         "start": 0,
         "sum": 0.5,
         "vrt": 101.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -477,7 +552,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -492,7 +570,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 4.5,
@@ -513,7 +594,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 102,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -528,7 +612,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -543,7 +630,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 5,
@@ -564,7 +654,10 @@ Array [
         "start": 0,
         "sum": 1.5,
         "vrt": 102.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -579,7 +672,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -594,7 +690,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 5.5,
@@ -615,7 +714,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -630,7 +732,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -645,7 +750,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 6,
@@ -666,7 +774,10 @@ Array [
         "start": 0,
         "sum": 2.5,
         "vrt": 102.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -681,7 +792,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -696,7 +810,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 6.5,
@@ -717,7 +834,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -732,7 +852,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -747,7 +870,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 7,
@@ -768,7 +894,10 @@ Array [
         "start": 0,
         "sum": 3.5,
         "vrt": 103.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -783,7 +912,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -798,7 +930,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 7.5,
@@ -819,7 +954,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -834,7 +972,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -849,7 +990,10 @@ Array [
         "start": 0,
         "sum": 4,
         "vrt": 104,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 8,
@@ -921,7 +1065,10 @@ Array [
         "start": 0,
         "sum": 0.5,
         "vrt": 100.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -935,7 +1082,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 100.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -949,7 +1099,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 0.5,
@@ -970,7 +1123,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -984,7 +1140,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 100.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -998,7 +1157,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 1,
@@ -1019,7 +1181,10 @@ Array [
         "start": 0,
         "sum": 1.5,
         "vrt": 101.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -1033,7 +1198,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 100.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -1047,7 +1215,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 1.5,
@@ -1068,7 +1239,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 100.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -1082,7 +1256,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -1097,7 +1274,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 2,
@@ -1118,7 +1298,10 @@ Array [
         "start": 0,
         "sum": 0.5,
         "vrt": 100.833,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -1132,7 +1315,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -1147,7 +1333,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 2.5,
@@ -1168,7 +1357,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 101.166,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -1182,7 +1374,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -1197,7 +1392,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 3,
@@ -1218,7 +1416,10 @@ Array [
         "start": 0,
         "sum": 1.5,
         "vrt": 101.499,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -1232,7 +1433,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -1247,7 +1451,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 3.5,
@@ -1268,7 +1475,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 101.832,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -1282,7 +1492,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -1297,7 +1510,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 4,
@@ -1318,7 +1534,10 @@ Array [
         "start": 0,
         "sum": 2.5,
         "vrt": 102.165,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -1332,7 +1551,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -1347,7 +1569,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 4.5,
@@ -1368,7 +1593,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -1383,7 +1611,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -1398,7 +1629,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 102.498,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 5,
@@ -1419,7 +1653,10 @@ Array [
         "start": 0,
         "sum": 0.5,
         "vrt": 102,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -1434,7 +1671,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -1449,7 +1689,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 102.498,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 5.5,
@@ -1470,7 +1713,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -1485,7 +1731,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 102.498,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -1500,7 +1749,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 6,
@@ -1521,7 +1773,10 @@ Array [
         "start": 0,
         "sum": 2.5,
         "vrt": 102.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -1536,7 +1791,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 102.498,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -1551,7 +1809,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 6.5,
@@ -1572,7 +1833,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -1587,7 +1851,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 102.498,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -1602,7 +1869,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 7,
@@ -1623,7 +1893,10 @@ Array [
         "start": 0,
         "sum": 3.5,
         "vrt": 103.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -1638,7 +1911,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 102.498,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -1653,7 +1929,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 7.5,
@@ -1674,7 +1953,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 102.498,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -1689,7 +1971,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -1704,7 +1989,10 @@ Array [
         "start": 0,
         "sum": 4,
         "vrt": 104,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 8,
@@ -1782,7 +2070,10 @@ Array [
         "start": 0,
         "sum": 0.5,
         "vrt": 100.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -1796,7 +2087,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 100.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -1812,7 +2106,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 0.5,
@@ -1832,7 +2129,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -1849,7 +2149,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 100.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -1865,7 +2168,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 1,
@@ -1885,7 +2191,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -1902,7 +2211,10 @@ Array [
         "start": 0,
         "sum": 0.5,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -1918,7 +2230,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 1.5,
@@ -1938,7 +2253,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -1955,7 +2273,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 101.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -1971,7 +2292,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 2,
@@ -1991,7 +2315,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -2008,7 +2335,10 @@ Array [
         "start": 0,
         "sum": 1.5,
         "vrt": 102,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -2024,7 +2354,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 2.5,
@@ -2044,7 +2377,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -2061,7 +2397,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -2077,7 +2416,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 3,
@@ -2097,7 +2439,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -2114,7 +2459,10 @@ Array [
         "start": 0,
         "sum": 2.5,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -2130,7 +2478,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 3.5,
@@ -2150,7 +2501,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -2169,7 +2523,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -2184,7 +2541,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 103.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 4,
@@ -2204,7 +2564,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -2223,7 +2586,10 @@ Array [
         "start": 0,
         "sum": 0.5,
         "vrt": 101.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -2238,7 +2604,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 103.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 4.5,
@@ -2258,7 +2627,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -2277,7 +2649,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 102,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -2292,7 +2667,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 103.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 5,
@@ -2312,7 +2690,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -2331,7 +2712,10 @@ Array [
         "start": 0,
         "sum": 1.5,
         "vrt": 102.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -2346,7 +2730,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 103.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 5.5,
@@ -2367,7 +2754,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 101,
-        "vrtlwk": "(101.333 < 103) \\\\checkmark",
+        "vrtlwk": Object {
+          "color": "blue",
+          "message": "(101.333 < 103) \\\\checkmark",
+        },
       },
       Object {
         "R": "",
@@ -2384,7 +2774,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -2399,7 +2792,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 103.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 6,
@@ -2420,7 +2816,10 @@ Array [
         "start": 0,
         "sum": 1.5,
         "vrt": 101.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -2437,7 +2836,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -2452,7 +2854,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 103.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 6.5,
@@ -2473,7 +2878,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -2490,7 +2898,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -2505,7 +2916,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 103.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 7,
@@ -2526,7 +2940,10 @@ Array [
         "start": 0,
         "sum": 2.5,
         "vrt": 102.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -2543,7 +2960,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -2558,7 +2978,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 103.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 7.5,
@@ -2581,7 +3004,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -2596,7 +3022,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -2611,7 +3040,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 103.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 8,
@@ -2634,7 +3066,10 @@ Array [
         "start": 0,
         "sum": 2.5,
         "vrt": 103.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -2649,7 +3084,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -2664,7 +3102,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 103.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 8.5,
@@ -2684,7 +3125,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 104,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -2701,7 +3145,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -2716,7 +3163,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 103.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 9,
@@ -2736,7 +3186,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 104,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -2753,7 +3206,10 @@ Array [
         "start": 0,
         "sum": 3.5,
         "vrt": 103.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -2768,7 +3224,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 103.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 9.5,
@@ -2789,7 +3248,10 @@ Array [
         "start": 0,
         "sum": 4,
         "vrt": 104,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -2804,7 +3266,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 103.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -2819,7 +3284,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 104,
-        "vrtlwk": "(104.333 < 104) \\\\times",
+        "vrtlwk": Object {
+          "color": "red",
+          "message": "(104.333 < 104) \\\\times",
+        },
       },
     ],
     "time": 10,
@@ -2840,7 +3308,10 @@ Array [
         "start": 0,
         "sum": 4.5,
         "vrt": 104.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -2855,7 +3326,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 103.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -2870,7 +3344,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 104,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 10.5,
@@ -2891,7 +3368,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 103.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -2906,7 +3386,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 104,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -2921,7 +3404,10 @@ Array [
         "start": 0,
         "sum": 5,
         "vrt": 105,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 11,
@@ -2942,7 +3428,10 @@ Array [
         "start": 0,
         "sum": 3.5,
         "vrt": 104,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -2957,7 +3446,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 104,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -2972,7 +3464,10 @@ Array [
         "start": 0,
         "sum": 5,
         "vrt": 105,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 11.5,
@@ -2993,7 +3488,10 @@ Array [
         "start": 0,
         "sum": 4,
         "vrt": 104.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -3008,7 +3506,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 104,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -3023,7 +3524,10 @@ Array [
         "start": 0,
         "sum": 5,
         "vrt": 105,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 12,
@@ -3111,7 +3615,10 @@ Array [
         "start": 0,
         "sum": 0.5,
         "vrt": 100.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -3129,7 +3636,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 100.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -3147,7 +3657,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 0.5,
@@ -3169,7 +3682,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -3190,7 +3706,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 100.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -3208,7 +3727,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 1,
@@ -3230,7 +3752,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -3251,7 +3776,10 @@ Array [
         "start": 0,
         "sum": 0.5,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -3269,7 +3797,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 1.5,
@@ -3291,7 +3822,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -3312,7 +3846,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 101.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -3330,7 +3867,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 2,
@@ -3352,7 +3892,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -3373,7 +3916,10 @@ Array [
         "start": 0,
         "sum": 1.5,
         "vrt": 102,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -3391,7 +3937,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 2.5,
@@ -3413,7 +3962,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -3434,7 +3986,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -3451,7 +4006,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 101,
-        "vrtlwk": "(101.5 < 101) \\\\times",
+        "vrtlwk": Object {
+          "color": "red",
+          "message": "(101.5 < 101) \\\\times",
+        },
       },
     ],
     "time": 3,
@@ -3473,7 +4031,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -3494,7 +4055,10 @@ Array [
         "start": 0,
         "sum": 0.5,
         "vrt": 101.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -3511,7 +4075,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 3.5,
@@ -3533,7 +4100,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -3554,7 +4124,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 102,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -3571,7 +4144,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 4,
@@ -3593,7 +4169,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -3614,7 +4193,10 @@ Array [
         "start": 0,
         "sum": 1.5,
         "vrt": 102.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -3631,7 +4213,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 4.5,
@@ -3654,7 +4239,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 101,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -3671,7 +4259,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102.5,
-        "vrtlwk": "(102.833 < 103) \\\\checkmark",
+        "vrtlwk": Object {
+          "color": "blue",
+          "message": "(102.833 < 103) \\\\checkmark",
+        },
       },
       Object {
         "R": "",
@@ -3690,7 +4281,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 5,
@@ -3713,7 +4307,10 @@ Array [
         "start": 0,
         "sum": 1.5,
         "vrt": 101.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -3730,7 +4327,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -3749,7 +4349,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 5.5,
@@ -3772,7 +4375,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -3789,7 +4395,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -3808,7 +4417,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 6,
@@ -3831,7 +4443,10 @@ Array [
         "start": 0,
         "sum": 2.5,
         "vrt": 102.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -3848,7 +4463,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -3867,7 +4485,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 6.5,
@@ -3890,7 +4511,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 102.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -3909,7 +4533,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -3926,7 +4553,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 7,
@@ -3949,7 +4579,10 @@ Array [
         "start": 0,
         "sum": 2.5,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -3968,7 +4601,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -3985,7 +4621,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 7.5,
@@ -4008,7 +4647,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 103.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -4027,7 +4669,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -4044,7 +4689,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 8,
@@ -4067,7 +4715,10 @@ Array [
         "start": 0,
         "sum": 3.5,
         "vrt": 104,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -4086,7 +4737,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -4103,7 +4757,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 8.5,
@@ -4123,7 +4780,10 @@ Array [
         "start": 0,
         "sum": 4,
         "vrt": 104.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -4144,7 +4804,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -4161,7 +4824,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 9,
@@ -4181,7 +4847,10 @@ Array [
         "start": 0,
         "sum": 4,
         "vrt": 104.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -4202,7 +4871,10 @@ Array [
         "start": 0,
         "sum": 2.5,
         "vrt": 103.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -4219,7 +4891,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 9.5,
@@ -4241,7 +4916,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 104,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "X",
@@ -4256,7 +4934,10 @@ Array [
         "start": 0,
         "sum": 4,
         "vrt": 104.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -4275,7 +4956,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 103,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 10,
@@ -4297,7 +4981,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 104,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "X",
@@ -4312,7 +4999,10 @@ Array [
         "start": 0,
         "sum": 4,
         "vrt": 104.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -4331,7 +5021,10 @@ Array [
         "start": 0,
         "sum": 3.5,
         "vrt": 103.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 10.5,
@@ -4351,7 +5044,10 @@ Array [
         "start": 0,
         "sum": 4,
         "vrt": 104,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "X",
@@ -4366,7 +5062,10 @@ Array [
         "start": 0,
         "sum": 4,
         "vrt": 104.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -4385,7 +5084,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 104,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 11,
@@ -4405,7 +5107,10 @@ Array [
         "start": 0,
         "sum": 4,
         "vrt": 104,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "X",
@@ -4420,7 +5125,10 @@ Array [
         "start": 0,
         "sum": 4,
         "vrt": 104.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -4439,7 +5147,10 @@ Array [
         "start": 0,
         "sum": 3.5,
         "vrt": 104.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 11.5,
@@ -4459,7 +5170,10 @@ Array [
         "start": 0,
         "sum": 4,
         "vrt": 104,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -4476,7 +5190,10 @@ Array [
         "start": 0,
         "sum": 4,
         "vrt": 104.5,
-        "vrtlwk": "(105 < 105) \\\\times",
+        "vrtlwk": Object {
+          "color": "red",
+          "message": "(105 < 105) \\\\times",
+        },
       },
       Object {
         "R": "X",
@@ -4493,7 +5210,10 @@ Array [
         "start": 0,
         "sum": 4,
         "vrt": 105,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 12,
@@ -4513,7 +5233,10 @@ Array [
         "start": 0,
         "sum": 4,
         "vrt": 104,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -4530,7 +5253,10 @@ Array [
         "start": 0,
         "sum": 4,
         "vrt": 104.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "X",
@@ -4547,7 +5273,10 @@ Array [
         "start": 0,
         "sum": 4.5,
         "vrt": 105.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 12.5,
@@ -4567,7 +5296,10 @@ Array [
         "start": 0,
         "sum": 5,
         "vrt": 106,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "X",
@@ -4582,7 +5314,10 @@ Array [
         "start": 0,
         "sum": 4,
         "vrt": 104,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -4599,7 +5334,10 @@ Array [
         "start": 0,
         "sum": 4,
         "vrt": 104.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 13,
@@ -4619,7 +5357,10 @@ Array [
         "start": 0,
         "sum": 5,
         "vrt": 106,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "X",
@@ -4634,7 +5375,10 @@ Array [
         "start": 0,
         "sum": 4,
         "vrt": 104,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -4651,7 +5395,10 @@ Array [
         "start": 0,
         "sum": 4.5,
         "vrt": 105,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 13.5,
@@ -4672,7 +5419,10 @@ Array [
         "start": 0,
         "sum": 5,
         "vrt": 105.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "X",
@@ -4687,7 +5437,10 @@ Array [
         "start": 0,
         "sum": 5,
         "vrt": 106,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "X",
@@ -4702,7 +5455,10 @@ Array [
         "start": 0,
         "sum": 4,
         "vrt": 104,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [],
@@ -4724,7 +5480,10 @@ Array [
         "start": 0,
         "sum": 5,
         "vrt": 105.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "X",
@@ -4739,7 +5498,10 @@ Array [
         "start": 0,
         "sum": 5,
         "vrt": 106,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "X",
@@ -4754,7 +5516,10 @@ Array [
         "start": 0,
         "sum": 4,
         "vrt": 104,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [],
@@ -4776,7 +5541,10 @@ Array [
         "start": 0,
         "sum": 5,
         "vrt": 105.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "X",
@@ -4791,7 +5559,10 @@ Array [
         "start": 0,
         "sum": 5,
         "vrt": 106,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -4808,7 +5579,10 @@ Array [
         "start": 0,
         "sum": 4,
         "vrt": 104,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 15,
@@ -4829,7 +5603,10 @@ Array [
         "start": 0,
         "sum": 5,
         "vrt": 105.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "X",
@@ -4844,7 +5621,10 @@ Array [
         "start": 0,
         "sum": 5,
         "vrt": 106,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -4861,7 +5641,10 @@ Array [
         "start": 0,
         "sum": 4.5,
         "vrt": 104.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 15.5,
@@ -4882,7 +5665,10 @@ Array [
         "start": 0,
         "sum": 5,
         "vrt": 105.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -4899,7 +5685,10 @@ Array [
         "start": 0,
         "sum": 5,
         "vrt": 105,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -4914,7 +5703,10 @@ Array [
         "start": 0,
         "sum": 5,
         "vrt": 106,
-        "vrtlwk": "(106.5 < 105) \\\\times",
+        "vrtlwk": Object {
+          "color": "red",
+          "message": "(106.5 < 105) \\\\times",
+        },
       },
     ],
     "time": 16,
@@ -4935,7 +5727,10 @@ Array [
         "start": 0,
         "sum": 5,
         "vrt": 105.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -4952,7 +5747,10 @@ Array [
         "start": 0,
         "sum": 5.5,
         "vrt": 105.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -4967,7 +5765,10 @@ Array [
         "start": 0,
         "sum": 5,
         "vrt": 106,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 16.5,
@@ -4988,7 +5789,10 @@ Array [
         "start": 0,
         "sum": 5,
         "vrt": 105.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -5005,7 +5809,10 @@ Array [
         "start": 0,
         "sum": 6,
         "vrt": 106,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -5020,7 +5827,10 @@ Array [
         "start": 0,
         "sum": 5,
         "vrt": 106,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 17,
@@ -5041,7 +5851,10 @@ Array [
         "start": 0,
         "sum": 5,
         "vrt": 105.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -5058,7 +5871,10 @@ Array [
         "start": 0,
         "sum": 6.5,
         "vrt": 106.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -5073,7 +5889,10 @@ Array [
         "start": 0,
         "sum": 5,
         "vrt": 106,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 17.5,
@@ -5094,7 +5913,10 @@ Array [
         "start": 0,
         "sum": 5,
         "vrt": 105.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -5111,7 +5933,10 @@ Array [
         "start": 0,
         "sum": 5,
         "vrt": 106,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -5126,7 +5951,10 @@ Array [
         "start": 0,
         "sum": 7,
         "vrt": 107,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 18,
@@ -5147,7 +5975,10 @@ Array [
         "start": 0,
         "sum": 5,
         "vrt": 105.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -5164,7 +5995,10 @@ Array [
         "start": 0,
         "sum": 5.5,
         "vrt": 106.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -5179,7 +6013,10 @@ Array [
         "start": 0,
         "sum": 7,
         "vrt": 107,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 18.5,
@@ -5200,7 +6037,10 @@ Array [
         "start": 0,
         "sum": 6,
         "vrt": 107,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "X",
@@ -5216,7 +6056,10 @@ Array [
         "start": 0,
         "sum": 5,
         "vrt": 105.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -5233,7 +6076,10 @@ Array [
         "start": 0,
         "sum": 7,
         "vrt": 107,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 19,
@@ -5254,7 +6100,10 @@ Array [
         "start": 0,
         "sum": 6,
         "vrt": 107,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "X",
@@ -5270,7 +6119,10 @@ Array [
         "start": 0,
         "sum": 5,
         "vrt": 105.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -5287,7 +6139,10 @@ Array [
         "start": 0,
         "sum": 7.5,
         "vrt": 107.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 19.5,
@@ -5308,7 +6163,10 @@ Array [
         "start": 0,
         "sum": 6,
         "vrt": 107,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "X",
@@ -5324,7 +6182,10 @@ Array [
         "start": 0,
         "sum": 5,
         "vrt": 105.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -5341,7 +6202,10 @@ Array [
         "start": 0,
         "sum": 8,
         "vrt": 108,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 20,
@@ -5362,7 +6226,10 @@ Array [
         "start": 0,
         "sum": 6,
         "vrt": 107,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "X",
@@ -5378,7 +6245,10 @@ Array [
         "start": 0,
         "sum": 5,
         "vrt": 105.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -5395,7 +6265,10 @@ Array [
         "start": 0,
         "sum": 8.5,
         "vrt": 108.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 20.5,
@@ -5416,7 +6289,10 @@ Array [
         "start": 0,
         "sum": 6,
         "vrt": 107,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "X",
@@ -5432,7 +6308,10 @@ Array [
         "start": 0,
         "sum": 5,
         "vrt": 105.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -5449,7 +6328,10 @@ Array [
         "start": 0,
         "sum": 9,
         "vrt": 109,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 21,
@@ -5470,7 +6352,10 @@ Array [
         "start": 0,
         "sum": 6,
         "vrt": 107,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "X",
@@ -5486,7 +6371,10 @@ Array [
         "start": 0,
         "sum": 5,
         "vrt": 105.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -5503,7 +6391,10 @@ Array [
         "start": 0,
         "sum": 9.5,
         "vrt": 109.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 21.5,
@@ -5524,7 +6415,10 @@ Array [
         "start": 0,
         "sum": 6,
         "vrt": 107,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "X",
@@ -5540,7 +6434,10 @@ Array [
         "start": 0,
         "sum": 5,
         "vrt": 105.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -5557,7 +6454,10 @@ Array [
         "start": 0,
         "sum": 10,
         "vrt": 110,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 22,
@@ -5578,7 +6478,10 @@ Array [
         "start": 0,
         "sum": 6,
         "vrt": 107,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "X",
@@ -5594,7 +6497,10 @@ Array [
         "start": 0,
         "sum": 5,
         "vrt": 105.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -5611,7 +6517,10 @@ Array [
         "start": 0,
         "sum": 10.5,
         "vrt": 110.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 22.5,
@@ -5632,7 +6541,10 @@ Array [
         "start": 0,
         "sum": 6,
         "vrt": 107,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "X",
@@ -5648,7 +6560,10 @@ Array [
         "start": 0,
         "sum": 5,
         "vrt": 105.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -5665,7 +6580,10 @@ Array [
         "start": 0,
         "sum": 11,
         "vrt": 111,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 23,
@@ -5686,7 +6604,10 @@ Array [
         "start": 0,
         "sum": 6,
         "vrt": 107,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "X",
@@ -5702,7 +6623,10 @@ Array [
         "start": 0,
         "sum": 5,
         "vrt": 105.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -5719,7 +6643,10 @@ Array [
         "start": 0,
         "sum": 11.5,
         "vrt": 111.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 23.5,
@@ -5740,7 +6667,10 @@ Array [
         "start": 0,
         "sum": 12,
         "vrt": 112,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "X",
@@ -5756,7 +6686,10 @@ Array [
         "start": 0,
         "sum": 6,
         "vrt": 107,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "X",
@@ -5772,7 +6705,10 @@ Array [
         "start": 0,
         "sum": 5,
         "vrt": 105.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [],
@@ -5845,7 +6781,10 @@ Array [
         "start": 0,
         "sum": 0.5,
         "vrt": 0.125,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -5859,7 +6798,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 0,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -5873,7 +6815,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 0,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 0.5,
@@ -5894,7 +6839,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 0.25,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -5908,7 +6856,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 0,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -5922,7 +6873,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 0,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 1,
@@ -5943,7 +6897,10 @@ Array [
         "start": 0,
         "sum": 1.5,
         "vrt": 0.375,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -5957,7 +6914,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 0,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -5971,7 +6931,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 0,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 1.5,
@@ -5992,7 +6955,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 0.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -6006,7 +6972,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 0,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -6020,7 +6989,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 0,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 2,
@@ -6041,7 +7013,10 @@ Array [
         "start": 0,
         "sum": 2.5,
         "vrt": 0.625,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -6055,7 +7030,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 0,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -6069,7 +7047,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 0,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 2.5,
@@ -6090,7 +7071,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 0.75,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -6104,7 +7088,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 0,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -6118,7 +7105,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 0,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 3,
@@ -6139,7 +7129,10 @@ Array [
         "start": 0,
         "sum": 3.5,
         "vrt": 0.875,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -6153,7 +7146,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 0,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -6167,7 +7163,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 0,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 3.5,
@@ -6188,7 +7187,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 0,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -6202,7 +7204,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 0,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -6217,7 +7222,10 @@ Array [
         "start": 0,
         "sum": 4,
         "vrt": 1,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 4,
@@ -6238,7 +7246,10 @@ Array [
         "start": 0,
         "sum": 0.5,
         "vrt": 0.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -6252,7 +7263,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 0,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -6267,7 +7281,10 @@ Array [
         "start": 0,
         "sum": 4,
         "vrt": 1,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 4.5,
@@ -6288,7 +7305,10 @@ Array [
         "start": 0,
         "sum": 0,
         "vrt": 0,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -6303,7 +7323,10 @@ Array [
         "start": 0,
         "sum": 4,
         "vrt": 1,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -6318,7 +7341,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 1,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 5,
@@ -6339,7 +7365,10 @@ Array [
         "start": 0,
         "sum": 0.5,
         "vrt": 0.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -6354,7 +7383,10 @@ Array [
         "start": 0,
         "sum": 4,
         "vrt": 1,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -6369,7 +7401,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 1,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 5.5,
@@ -6390,7 +7425,10 @@ Array [
         "start": 0,
         "sum": 4,
         "vrt": 1,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -6405,7 +7443,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 1,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -6420,7 +7461,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 1,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 6,
@@ -6441,7 +7485,10 @@ Array [
         "start": 0,
         "sum": 4.5,
         "vrt": 1.125,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -6456,7 +7503,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 1,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -6471,7 +7521,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 1,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 6.5,
@@ -6492,7 +7545,10 @@ Array [
         "start": 0,
         "sum": 5,
         "vrt": 1.25,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -6507,7 +7563,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 1,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -6522,7 +7581,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 1,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 7,
@@ -6543,7 +7605,10 @@ Array [
         "start": 0,
         "sum": 5.5,
         "vrt": 1.375,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -6558,7 +7623,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 1,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -6573,7 +7641,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 1,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 7.5,
@@ -6594,7 +7665,10 @@ Array [
         "start": 0,
         "sum": 6,
         "vrt": 1.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -6609,7 +7683,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 1,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -6624,7 +7701,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 1,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 8,
@@ -6645,7 +7725,10 @@ Array [
         "start": 0,
         "sum": 6.5,
         "vrt": 1.625,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -6660,7 +7743,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 1,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -6675,7 +7761,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 1,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 8.5,
@@ -6696,7 +7785,10 @@ Array [
         "start": 0,
         "sum": 7,
         "vrt": 1.75,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -6711,7 +7803,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 1,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -6726,7 +7821,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 1,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 9,
@@ -6747,7 +7845,10 @@ Array [
         "start": 0,
         "sum": 7.5,
         "vrt": 1.875,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -6762,7 +7863,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 1,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -6777,7 +7881,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 1,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 9.5,
@@ -6798,7 +7905,10 @@ Array [
         "start": 0,
         "sum": 8,
         "vrt": 2,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -6815,7 +7925,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 1,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -6830,7 +7943,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 1,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 10,
@@ -6851,7 +7967,10 @@ Array [
         "start": 0,
         "sum": 8,
         "vrt": 2,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -6868,7 +7987,10 @@ Array [
         "start": 0,
         "sum": 1.5,
         "vrt": 1.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -6883,7 +8005,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 1,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 10.5,
@@ -6904,7 +8029,10 @@ Array [
         "start": 0,
         "sum": 8,
         "vrt": 2,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -6921,7 +8049,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 2,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -6936,7 +8067,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 1,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 11,
@@ -6957,7 +8091,10 @@ Array [
         "start": 0,
         "sum": 8,
         "vrt": 2,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -6974,7 +8111,10 @@ Array [
         "start": 0,
         "sum": 2.5,
         "vrt": 2.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -6989,7 +8129,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 1,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 11.5,
@@ -7010,7 +8153,10 @@ Array [
         "start": 0,
         "sum": 8,
         "vrt": 2,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -7027,7 +8173,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 3,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -7042,7 +8191,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 1,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 12,
@@ -7063,7 +8215,10 @@ Array [
         "start": 0,
         "sum": 8,
         "vrt": 2,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -7080,7 +8235,10 @@ Array [
         "start": 0,
         "sum": 3.5,
         "vrt": 3.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -7095,7 +8253,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 1,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 12.5,
@@ -7116,7 +8277,10 @@ Array [
         "start": 0,
         "sum": 8,
         "vrt": 2,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -7133,7 +8297,10 @@ Array [
         "start": 0,
         "sum": 1,
         "vrt": 1,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -7148,7 +8315,10 @@ Array [
         "start": 0,
         "sum": 4,
         "vrt": 4,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 13,
@@ -7169,7 +8339,10 @@ Array [
         "start": 0,
         "sum": 8,
         "vrt": 2,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -7186,7 +8359,10 @@ Array [
         "start": 0,
         "sum": 1.5,
         "vrt": 1.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -7201,7 +8377,10 @@ Array [
         "start": 0,
         "sum": 4,
         "vrt": 4,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 13.5,
@@ -7222,7 +8401,10 @@ Array [
         "start": 0,
         "sum": 8,
         "vrt": 2,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -7239,7 +8421,10 @@ Array [
         "start": 0,
         "sum": 2,
         "vrt": 2,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -7254,7 +8439,10 @@ Array [
         "start": 0,
         "sum": 4,
         "vrt": 4,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 14,
@@ -7275,7 +8463,10 @@ Array [
         "start": 0,
         "sum": 8,
         "vrt": 2,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -7292,7 +8483,10 @@ Array [
         "start": 0,
         "sum": 2.5,
         "vrt": 2.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -7307,7 +8501,10 @@ Array [
         "start": 0,
         "sum": 4,
         "vrt": 4,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 14.5,
@@ -7328,7 +8525,10 @@ Array [
         "start": 0,
         "sum": 8,
         "vrt": 2,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -7345,7 +8545,10 @@ Array [
         "start": 0,
         "sum": 3,
         "vrt": 3,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -7360,7 +8563,10 @@ Array [
         "start": 0,
         "sum": 4,
         "vrt": 4,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 15,
@@ -7381,7 +8587,10 @@ Array [
         "start": 0,
         "sum": 8,
         "vrt": 2,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -7398,7 +8607,10 @@ Array [
         "start": 0,
         "sum": 3.5,
         "vrt": 3.5,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -7413,7 +8625,10 @@ Array [
         "start": 0,
         "sum": 4,
         "vrt": 4,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 15.5,
@@ -7434,7 +8649,10 @@ Array [
         "start": 0,
         "sum": 8,
         "vrt": 2,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "rbt": Array [
@@ -7451,7 +8669,10 @@ Array [
         "start": 0,
         "sum": 4,
         "vrt": 4,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
       Object {
         "R": "",
@@ -7466,7 +8687,10 @@ Array [
         "start": 0,
         "sum": 4,
         "vrt": 4,
-        "vrtlwk": "",
+        "vrtlwk": Object {
+          "color": "black",
+          "message": "",
+        },
       },
     ],
     "time": 16,
