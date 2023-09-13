@@ -10,7 +10,7 @@ let tests = {};
 let latex = {};
 
 sims.cfs = require("./lib/cfs/lib").eventLoop;
-latex.cfs = require("./lib/cfs/lib").exportLatex;
+let { exportLatex } = require("./lib/artifacts");
 tests.cfs = require("./lib/cfs/fixtures").schedule;
 
 let $fs = require("mz/fs");
@@ -53,7 +53,7 @@ let main = () => {
     .action(({ logger, args, options }) => {
       let datap = args.json ? $fs.readFile(args.json, "utf8") : $gstd();
       datap.then(JSON.parse).then((sim) => {
-        console.log(latex["cfs"](options, sim, logger)[args.artifact].code);
+        console.log(exportLatex(options, sim, logger)[args.artifact].code);
       });
     });
   program.run();
