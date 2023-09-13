@@ -25,30 +25,22 @@ let main = () => {
   program
     .name("aos-sched")
     .description("Create temporal diagrams of AOS realtime schedulers")
+    .command("dump", "Dump out examples")
+    .argument("<sched>", "Scheduler to use", {
+      validator: ["cfs"],
+    })
+    .argument("<num>", "Example number", {
+      validator: program.NUMBER,
+    })
+    .action(({ logger, args }) => {
+      console.log(JSON.stringify(tests[args.sched][args.num]));
+    })
+    .command("simulate", "Simulate provided schedule")
     .argument("<sched>", "Scheduler to use", {
       validator: ["cfs"],
     })
     .argument("[json]", "JSON file or stdin")
-    .option("-e, --example <num>", "Print out one of the json input examples", {
-      validator: program.NUMBER,
-    })
-    .option(
-      "-t, --latex <name>",
-      "Export latex artifact <name> instead of raw json simulation",
-      {
-        validator: program.STRING,
-      }
-    )
-    // .option(
-    //   "-s, --save <string>",
-    //   "save data with in files with prefix <string>"
-    // )
-    // .option("-w, --draw", "produce only latex code for drawing")
     .action(({ logger, args, options }) => {
-      if (!_.isUndefined(options.example)) {
-        console.log(JSON.stringify(tests[args.sched][options.example]));
-        return;
-      }
       let datap = args.json ? $fs.readFile(args.json, "utf8") : $gstd();
       datap.then(JSON.parse).then((sched) => {
         let sim = sims[args.sched](options, sched, logger);
@@ -59,6 +51,15 @@ let main = () => {
         } else {
           console.log(JSON.stringify(sim, null, 2));
         }
+      });
+    })
+    .command("export", "Export simulation data to available formats")
+    .argument("<artifact>", "Artifact name")
+    .argument("[json]", "JSON file or stdin")
+    .action(({ logger, args, options }) => {
+      let datap = args.json ? $fs.readFile(args.json, "utf8") : $gstd();
+      datap.then(JSON.parse).then((sim) => {
+        console.log(latex["cfs"](options, sim, logger)[args.artifact].code);
       });
     });
   program.run();
