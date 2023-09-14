@@ -1,6 +1,51 @@
-let _ = require("lodash");
+import { Logger } from "winston";
+import _ from "lodash";
 
-let latexArtifact = (code, name, clss, engine, addoptions) => {
+type TaskSlot = {
+  tstart: number;
+  event: string;
+  tend: number;
+  index: number;
+  belowSlot: string;
+  inSlot: string;
+  aboveSlot: {
+    message: string;
+    color: string;
+  };
+};
+
+type Task = {
+  index: number;
+  name: string;
+  start: number;
+  exited: number;
+  legendBelowTask1: string;
+  legendBelowTask2: string;
+};
+
+type Options = { blank: Boolean };
+
+type Simulation = {
+  scheddata: {
+    legendAbove: string;
+    blankData: string;
+  };
+  schedule: {
+    timer: number;
+    runfor: number;
+    graphics: any;
+    tasks: Task[];
+  };
+  timeline: TaskSlot[];
+};
+
+let latexArtifact = (
+  code: string,
+  name: string,
+  clss: string,
+  engine: string,
+  addoptions: string
+) => {
   let sfx = _.kebabCase(name);
   if (_.isUndefined(clss)) clss = "standalone";
   if (_.isUndefined(engine)) engine = "pdflatex";
@@ -15,28 +60,28 @@ let latexArtifact = (code, name, clss, engine, addoptions) => {
   };
 };
 
-let wrapper = (c) => `
+let wrapper = (c: string) => `
 \\begin{tikzpicture}
 ${c}
 \\end{tikzpicture}
 `;
 
-let simToLatex = (sim, options, logger) => {
+let simToLatex = (sim: Simulation, options: Options, logger: Logger) => {
   let hs = sim.schedule.graphics.hspace;
   let vs = sim.schedule.graphics.vspace;
   let hh = sim.schedule.graphics.barheight;
 
-  let printAt = (time, index, m) => {
+  let printAt = (time: number, index: number, m: string) => {
     return `\\node at(${hs * time}, ${index * hs + 0.5 * hh}) {\\tiny ${m}};`;
   };
 
-  let printAtConf = (time, index, m, conf) => {
+  let printAtConf = (time: number, index: number, m: string, conf: string) => {
     return `\\node [${conf}] at(${hs * time}, ${
       index * hs + 0.5 * hh
     }) {\\tiny ${m}};`;
   };
 
-  let pAboveSlot = (r) =>
+  let pAboveSlot = (r: TaskSlot) =>
     !_.isUndefined(r.aboveSlot) && r.aboveSlot.message !== ""
       ? printAtConf(
           r.tend,
@@ -46,9 +91,7 @@ let simToLatex = (sim, options, logger) => {
         )
       : "";
 
-  let r2 = (x) => Math.round(x * 1000) / 1000;
-
-  let drawRan = (r) => {
+  let drawRan = (r: TaskSlot) => {
     return [
       `\\draw[draw=black] (${r.tstart * hs}, ${r.index * vs}) rectangle ++(${
         (r.tend - r.tstart) * hs
@@ -58,7 +101,7 @@ let simToLatex = (sim, options, logger) => {
       pAboveSlot(r),
     ];
   };
-  let drawBlocked = (r) => {
+  let drawBlocked = (r: TaskSlot) => {
     return [
       `\\draw[draw=black, fill=gray] (${r.tstart * hs}, ${
         r.index * vs
@@ -68,10 +111,10 @@ let simToLatex = (sim, options, logger) => {
       pAboveSlot(r),
     ];
   };
-  let drawRunnable = (r) => {
+  let drawRunnable = (r: TaskSlot) => {
     return [pAboveSlot(r)];
   };
-  let diag = _.map(sim.timeline, (x, i) => {
+  let diag = _.map(sim.timeline, (x) => {
     if (x.tstart < sim.schedule.runfor) {
       if (x.event === "RAN") return drawRan(x);
       if (x.event === "BLOCKED") return drawBlocked(x);
@@ -139,7 +182,7 @@ let simToLatex = (sim, options, logger) => {
   }
 };
 
-let exportLatex = (options, sim, logger) => {
+let exportLatex = (sim: Simulation, logger: Logger) => {
   return {
     complete: latexArtifact(
       simToLatex(sim, { blank: false }, logger),
@@ -165,12 +208,4 @@ let exportLatex = (options, sim, logger) => {
   };
 };
 
-module.exports = {
-  latexArtifact,
-  saveArtifact,
-  saveArtifacts,
-  compileArtifact,
-  compileArtifacts,
-  simToLatex,
-  exportLatex,
-};
+export { exportLatex, Simulation };

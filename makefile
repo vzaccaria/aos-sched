@@ -1,3 +1,3 @@
 
 test-%:
-	./index.js dump cfs $* | ./index.js simulate cfs | ./index.js export complete | tikz2pdf -p
+	./index.ts dump cfs $* | ./index.ts simulate cfs | ./index.ts export complete | tikz2pdf -p

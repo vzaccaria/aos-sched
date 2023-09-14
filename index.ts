@@ -1,25 +1,25 @@
 #!/usr/bin/env bun
-"use strict";
 
-const { program } = require("@caporal/core");
+import { program } from "@caporal/core";
 
-let _ = require("lodash");
+import { exportLatex, Simulation } from "./lib/artifacts";
 
-let sims = {};
-let tests = {};
-let latex = {};
+interface Tests {
+  cfs: any[];
+}
 
-sims.cfs = require("./lib/cfs/lib").eventLoop;
-let { exportLatex } = require("./lib/artifacts");
+interface Simulators {
+  cfs: any;
+}
+
+let tests: Tests = { cfs: [] };
+let sims: Simulators = { cfs: null };
+
 tests.cfs = require("./lib/cfs/fixtures").schedule;
+sims.cfs = require("./lib/cfs/lib").eventLoop;
 
 let $fs = require("mz/fs");
 let $gstd = require("get-stdin");
-
-function showArray(arrayOfObjects) {
-  const jsonStringArray = arrayOfObjects.map((obj) => JSON.stringify(obj));
-  return `[${jsonStringArray.join("\n,")}]`;
-}
 
 let main = () => {
   program
@@ -32,8 +32,9 @@ let main = () => {
     .argument("<num>", "Example number", {
       validator: program.NUMBER,
     })
-    .action(({ logger, args }) => {
-      console.log(JSON.stringify(tests[args.sched][args.num]));
+    .action(({ args }) => {
+      let n: number = parseInt(args.num + "");
+      console.log(JSON.stringify(tests[args.sched + ""][n]));
     })
     .command("simulate", "Simulate provided schedule")
     .argument("<sched>", "Scheduler to use", {
@@ -42,18 +43,18 @@ let main = () => {
     .argument("[json]", "JSON file or stdin")
     .action(({ logger, args, options }) => {
       let datap = args.json ? $fs.readFile(args.json, "utf8") : $gstd();
-      datap.then(JSON.parse).then((sched) => {
-        let sim = sims[args.sched](options, sched, logger).simData;
+      datap.then(JSON.parse).then((sched: string) => {
+        let sim = sims[args.sched + ""](options, sched, logger).simData;
         console.log(JSON.stringify(sim, null, 2));
       });
     })
     .command("export", "Export simulation data to available formats")
     .argument("<artifact>", "Artifact name")
     .argument("[json]", "JSON file or stdin")
-    .action(({ logger, args, options }) => {
+    .action(({ logger, args }) => {
       let datap = args.json ? $fs.readFile(args.json, "utf8") : $gstd();
-      datap.then(JSON.parse).then((sim) => {
-        console.log(exportLatex(options, sim, logger)[args.artifact].code);
+      datap.then(JSON.parse).then((sim: Simulation) => {
+        console.log(exportLatex(sim, logger)[args.artifact + ""].code);
       });
     });
   program.run();
