@@ -1,43 +1,6 @@
 import { Logger } from "winston";
 import _ from "lodash";
-
-type TaskSlot = {
-  tstart: number;
-  event: string;
-  tend: number;
-  index: number;
-  belowSlot: string;
-  inSlot: string;
-  aboveSlot: {
-    message: string;
-    color: string;
-  };
-};
-
-type Task = {
-  index: number;
-  name: string;
-  start: number;
-  exited: number;
-  legendBelowTask1: string;
-  legendBelowTask2: string;
-};
-
-type Options = { blank: Boolean };
-
-type Simulation = {
-  scheddata: {
-    legendAbove: string;
-    blankData: string;
-  };
-  schedule: {
-    timer: number;
-    runfor: number;
-    graphics: any;
-    tasks: Task[];
-  };
-  timeline: TaskSlot[];
-};
+import { Plan, Schedule, Options, TaskSlot } from "./types";
 
 let latexArtifact = (
   code: string,
@@ -66,10 +29,10 @@ ${c}
 \\end{tikzpicture}
 `;
 
-let simToLatex = (sim: Simulation, options: Options, logger: Logger) => {
-  let hs = sim.schedule.graphics.hspace;
-  let vs = sim.schedule.graphics.vspace;
-  let hh = sim.schedule.graphics.barheight;
+let schedToLatex = (sched: Schedule, options: Options, logger: Logger) => {
+  let hs = sched.plan.graphics.hspace;
+  let vs = sched.plan.graphics.vspace;
+  let hh = sched.plan.graphics.barheight;
 
   let printAt = (time: number, index: number, m: string) => {
     return `\\node at(${hs * time}, ${index * hs + 0.5 * hh}) {\\tiny ${m}};`;
@@ -114,45 +77,45 @@ let simToLatex = (sim: Simulation, options: Options, logger: Logger) => {
   let drawRunnable = (r: TaskSlot) => {
     return [pAboveSlot(r)];
   };
-  let diag = _.map(sim.timeline, (x) => {
-    if (x.tstart < sim.schedule.runfor) {
+  let diag = _.map(sched.timeline, (x) => {
+    if (x.tstart < sched.plan.runfor) {
       if (x.event === "RAN") return drawRan(x);
       if (x.event === "BLOCKED") return drawBlocked(x);
       if (x.event === "RUNNABLE") return drawRunnable(x);
     }
     return [];
   });
-  logger.debug(sim.schedule.tasks);
+  logger.debug(sched.plan.tasks);
   let tnames = _.flattenDeep([
     _.map(
-      sim.schedule.tasks,
+      sched.plan.tasks,
       (t) => `\\node at(${hs * -1}, ${t.index * hs + 0.5 * hh}) {${t.name}};`
     ),
-    _.map(sim.schedule.tasks, (t) => [
-      printAt(-0.6, t.index - 0.4, t.legendBelowTask1),
-      printAt(-0.6, t.index - 0.2, t.legendBelowTask2),
+    _.map(sched.plan.tasks, (t) => [
+      printAt(-0.6, t.index - 0.4, t.description[0]),
+      printAt(-0.6, t.index - 0.2, t.description[1]),
     ]),
   ]);
   let grid = [
-    `\\draw[xstep=${sim.schedule.timer},gray!20,thin,shift={(0,-0.25)}] (0,0) grid (${sim.schedule.runfor},${sim.schedule.tasks.length});`,
-    _.map(_.range(0, sim.schedule.runfor / sim.schedule.timer + 1), (i) =>
+    `\\draw[xstep=${sched.plan.timer},gray!20,thin,shift={(0,-0.25)}] (0,0) grid (${sched.plan.runfor},${sched.plan.tasks.length});`,
+    _.map(_.range(0, sched.plan.runfor / sched.plan.timer + 1), (i) =>
       printAtConf(
-        i * sim.schedule.timer,
+        i * sched.plan.timer,
         -0.7,
-        `\\emph{${i * sim.schedule.timer}}`,
+        `\\emph{${i * sched.plan.timer}}`,
         "text=gray"
       )
     ),
   ];
-  logger.debug(sim.schedule.tasks);
+  logger.debug(sched.plan.tasks);
 
-  let taskevents = _.map(sim.schedule.tasks, (t) => {
+  let taskevents = _.map(sched.plan.tasks, (t) => {
     return [
       `\\draw [->] (${t.start}, ${t.index} + 0.75) -- (${t.start}, ${t.index});`,
     ];
   });
 
-  let taskexits = _.map(sim.schedule.tasks, (t) => {
+  let taskexits = _.map(sched.plan.tasks, (t) => {
     return !_.isUndefined(t.exited)
       ? [
           `\\draw [<-] (${t.exited}, ${t.index} + 0.75) -- (${t.exited}, ${t.index});`,
@@ -163,8 +126,8 @@ let simToLatex = (sim: Simulation, options: Options, logger: Logger) => {
   let data = [
     printAtConf(
       -0.6,
-      sim.schedule.tasks.length,
-      sim.scheddata.legendAbove,
+      sched.plan.tasks.length,
+      sched.scheddata.legendAbove,
       "anchor=west"
     ),
   ];
@@ -182,17 +145,17 @@ let simToLatex = (sim: Simulation, options: Options, logger: Logger) => {
   }
 };
 
-let exportLatex = (sim: Simulation, logger: Logger) => {
+let exportLatex = (sim: Schedule, logger: Logger) => {
   return {
     complete: latexArtifact(
-      simToLatex(sim, { blank: false }, logger),
+      schedToLatex(sim, { blank: false }, logger),
       "rt diagram",
       "standalone",
       "pdflatex",
       "-r varwidth"
     ),
     blank: latexArtifact(
-      simToLatex(sim, { blank: true }, logger),
+      schedToLatex(sim, { blank: true }, logger),
       "rt diagram blank",
       "standalone",
       "pdflatex",
@@ -208,4 +171,4 @@ let exportLatex = (sim: Simulation, logger: Logger) => {
   };
 };
 
-export { exportLatex, Simulation };
+export { exportLatex };

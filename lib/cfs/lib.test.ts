@@ -1,6 +1,6 @@
-const _ = require("lodash");
-const { eventLoop } = require("./lib");
-const { schedule } = require("./fixtures");
+import _ from "lodash";
+import { eventLoop } from "./lib";
+import { schedule } from "./fixtures";
 
 const logger = {
   debug: () => {},

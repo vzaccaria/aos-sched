@@ -2,7 +2,8 @@
 
 import { program } from "@caporal/core";
 
-import { exportLatex, Simulation } from "./lib/artifacts";
+import { exportLatex } from "./lib/artifacts";
+import { Schedule } from "./lib/types";
 
 interface Tests {
   cfs: any[];
@@ -53,7 +54,7 @@ let main = () => {
     .argument("[json]", "JSON file or stdin")
     .action(({ logger, args }) => {
       let datap = args.json ? $fs.readFile(args.json, "utf8") : $gstd();
-      datap.then(JSON.parse).then((sim: Simulation) => {
+      datap.then(JSON.parse).then((sim: Schedule) => {
         console.log(exportLatex(sim, logger)[args.artifact + ""].code);
       });
     });
