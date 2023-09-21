@@ -3,21 +3,23 @@
 import { program } from "@caporal/core";
 
 import { exportLatex } from "./lib/artifacts";
-import { Schedule } from "./lib/types";
+import { Schedule, Plan, ScheduleProducer } from "./lib/types";
 
-interface Tests {
-  cfs: any[];
-}
+type Tests = {
+  cfs: Plan<any, any>[];
+};
 
-interface Simulators {
-  cfs: any;
-}
+type Simulators = {
+  cfs: ScheduleProducer;
+};
 
-let tests: Tests = { cfs: [] };
-let sims: Simulators = { cfs: null };
+let tests: Tests = {
+  cfs: require("./lib/cfs/fixtures").plans as Plan<any, any>[],
+};
 
-tests.cfs = require("./lib/cfs/fixtures").schedule;
-sims.cfs = require("./lib/cfs/lib").eventLoop;
+let sims: Simulators = {
+  cfs: require("./lib/cfs/lib").produceSchedule as ScheduleProducer,
+};
 
 let $fs = require("mz/fs");
 let $gstd = require("get-stdin");
@@ -44,9 +46,12 @@ let main = () => {
     .argument("[json]", "JSON file or stdin")
     .action(({ logger, args, options }) => {
       let datap = args.json ? $fs.readFile(args.json, "utf8") : $gstd();
-      datap.then(JSON.parse).then((sched: string) => {
-        let sim = sims[args.sched + ""](options, sched, logger).simData;
-        console.log(JSON.stringify(sim, null, 2));
+      datap.then(JSON.parse).then((sched: Plan<any, any>) => {
+        let sim: Schedule;
+        if (args.sched === "cfs") {
+          sim = sims.cfs(options, sched, logger);
+          console.log(JSON.stringify(sim, null, 2));
+        }
       });
     })
     .command("export", "Export simulation data to available formats")

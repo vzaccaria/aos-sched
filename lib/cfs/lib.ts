@@ -2,6 +2,7 @@ import _ from "lodash";
 import { Logger } from "winston";
 import {
   Plan,
+  ScheduleProducer,
   Schedule,
   Task,
   TaskSlot,
@@ -10,10 +11,13 @@ import {
   Maybe,
 } from "../types";
 
-type CFSTask = Task & {
+type CFSPlanTask = Task & {
   lambda: number;
-  events: number[];
   vrt: number;
+  events: number[];
+};
+
+type CFSTask = CFSPlanTask & {
   // the following are going to be gradually added during the simulation, but are not required at ingress
   origvrt: number;
   sum: number;
@@ -33,12 +37,19 @@ type CFSTaskSlot = TaskSlot & {
   q: number;
 };
 
-type CFSClass = { wgup: number; latency: number; mingran: number };
+type CFSClass = {
+  type: string;
+  wgup: number;
+  latency: number;
+  mingran: number;
+};
 
-type CFSPlan = Plan<CFSTask, CFSClass>;
+type CFSPlan = Plan<CFSPlanTask, CFSClass>;
+type InternalCFSPlan = Plan<CFSTask, CFSClass>;
 
 type CFSState = {
-  plan: CFSPlan;
+  origplan: CFSPlan;
+  internalplan: InternalCFSPlan;
   curr?: CFSTask;
   rbt: CFSTask[];
   blocked: CFSTask[];
@@ -67,17 +78,19 @@ let r2 = (x: number) => Math.round(x * 1000) / 1000;
 
 let eventLoop = (
   options: any,
-  plan: CFSPlan,
+  origplan: CFSPlan,
   logger: Logger
 ): CFSEventLoopRes => {
-  let origPlan = _.cloneDeep(plan) as CFSPlan;
+  let plan = _.cloneDeep(origplan) as InternalCFSPlan;
 
   plan.tasks = _.map(plan.tasks, (t) => {
     t.origvrt = t.vrt;
     return t;
   });
+
   let state: CFSState = {
-    plan: plan,
+    origplan: origplan,
+    internalplan: plan,
     curr: undefined,
     rbt: [],
     blocked: [],
@@ -257,12 +270,12 @@ let eventLoop = (
             v.exited = timer.walltime;
           }
 
-          v = _.find(
-            origPlan.tasks,
+          let vp = _.find(
+            state.origplan.tasks,
             (t) => t.index === (state.curr ? state.curr.index : 0)
           );
-          if (v) {
-            v.exited = timer.walltime;
+          if (vp) {
+            vp.exited = timer.walltime;
           }
         }
         resched(`putting task to sleep ${ts.name} @${timer.walltime}`);
@@ -311,14 +324,17 @@ let printData = (plan: CFSPlan) => {
 
 let serialiseSim = (
   cfsStateSnapshots: CFSStateSnapshot[],
-  cfsPlan: CFSPlan
+  cfsPlan: InternalCFSPlan
 ): Schedule => {
   // assume we always start from 0
 
-  let getCFSTaskSlot = (tindex: number, t: number): Maybe<CFSTaskSlot> => {
+  let getCFSTaskSlot = (
+    tindex: number,
+    curtime: number
+  ): Maybe<CFSTaskSlot> => {
     let { rbt, blocked } = _.defaultTo(
       _.find(cfsStateSnapshots, ({ time }) => {
-        return time === t;
+        return time === curtime;
       }),
       { rbt: [], blocked: [] }
     );
@@ -328,8 +344,8 @@ let serialiseSim = (
       if (rbt.length > 0 && tr.index === tindex) {
         return {
           event: "RAN",
-          tstart: t,
-          tend: t + cfsPlan.timer,
+          tstart: curtime,
+          tend: curtime + cfsPlan.timer,
           index: tr.index,
           vrt: tr.vrt,
           sum: tr.sum,
@@ -344,8 +360,8 @@ let serialiseSim = (
         if (!_.isUndefined((tt = _.find(rbt, (t) => t.index === tindex)))) {
           return {
             event: "RUNNABLE",
-            tstart: t,
-            tend: t + cfsPlan.timer,
+            tstart: curtime,
+            tend: curtime + cfsPlan.timer,
             index: tt.index,
             vrt: tt.vrt,
             sum: tt.sum,
@@ -359,11 +375,11 @@ let serialiseSim = (
           if (
             !_.isUndefined((tt = _.find(blocked, (t) => t.index === tindex)))
           ) {
-            if (_.isUndefined(tt.exited) || t < tt.exited) {
+            if (_.isUndefined(tt.exited) || curtime < tt.exited) {
               return {
                 event: "BLOCKED",
-                tstart: t,
-                tend: t + cfsPlan.timer,
+                tstart: curtime,
+                tend: curtime + cfsPlan.timer,
                 index: tt.index,
                 vrt: tt.vrt,
                 sum: tt.sum,
@@ -376,8 +392,8 @@ let serialiseSim = (
             } else {
               return {
                 event: "EXITED",
-                tstart: t,
-                tend: t + cfsPlan.timer,
+                tstart: curtime,
+                tend: curtime + cfsPlan.timer,
                 index: tt.index,
                 vrt: tt.vrt,
                 sum: tt.sum,
@@ -448,4 +464,13 @@ let serialiseSim = (
   };
 };
 
-export { eventLoop };
+let produceSchedule: ScheduleProducer;
+produceSchedule = function (
+  options: any,
+  plan: Plan<any, any>,
+  logger: Logger
+) {
+  return eventLoop(options, plan as CFSPlan, logger).simData;
+};
+
+export { eventLoop, produceSchedule, CFSPlan };

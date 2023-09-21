@@ -1,6 +1,8 @@
-let _ = require("lodash");
+import { CFSPlan } from "./lib";
 
-let schedule1 = {
+import _ from "lodash";
+
+let schedule1: CFSPlan = {
   timer: 0.5,
   runfor: 8,
   class: {
@@ -188,21 +190,17 @@ let schedule4 = {
   graphics: { vspace: 1, hspace: 1, barheight: 0.5 },
 };
 
-let schedule = [
+let plans: CFSPlan[] = [
   schedule0,
   schedule1,
   schedule2,
-  // _.merge(_.cloneDeep(schedule2), { timer: 0.25 }),
-  // _.merge(_.cloneDeep(schedule0), { runfor: 30 }),
-  // _.merge(_.cloneDeep(schedule2), { runfor: 40 }),
-  // _.merge(_.cloneDeep(schedule2), { timer: 0.25, runfor: 40 }),
-  // _.merge(_.cloneDeep(schedule1), { runfor: 40 }),
   schedule3,
-  // _.merge(_.cloneDeep(schedule3), {
-  //   runfor: 21,
-  //   tasks: [{ lambda: 0.5 }, { lambda: 1 }, { lambda: 1.5 }]
-  // }),
   schedule4,
+  // { ...schedule2, timer: 0.25 },
+  // { ...schedule0, runfor: 30 },
+  // { ...schedule2, runfor: 40 },
+  // { ...schedule2, timer: 0.25, runfor: 40 },
+  // { ...schedule1, runfor: 40 },
 ];
 
-module.exports = { schedule };
+module.exports = { plans };
