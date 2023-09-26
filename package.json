@@ -9,7 +9,7 @@
   "author": "Vittorio Zaccaria",
   "license": "MIT",
   "bin": {
-    "aos-sched": "./index.js"
+    "aos-sched": "./index.ts"
   },
   "dependencies": {
     "@caporal/core": "2.0.7",
