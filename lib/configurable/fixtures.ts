@@ -1,42 +1,42 @@
-import { CFSPlan } from "./lib";
+import { SimPlan, FIFOSchedClass, SJFSchedClass, SRTFSchedClass } from "./lib";
 
 import _ from "lodash";
 
-let schedule1: CFSPlan = {
+/*
+IMPORTANT:
+There are two ways a task can end:
+- it reaches its last event and such event is a permanent sleep (no subsequent wakeup)
+- it finishes its required computation time
+
+Events alternate, the first is a sleep, then a wakeup, then sleep, ...
+*/
+
+let schedule1: SimPlan = {
   timer: 0.5,
   runfor: 8,
-  class: {
-    type: "CFS",
-    latency: 6.0,
-    mingran: 0.75,
-    wgup: 1,
-  },
+  class: FIFOSchedClass,
 
   tasks: [
     {
       index: 0,
       name: "$t_1$",
-      lambda: 1,
+      computation: 8,
       arrival: 0,
       events: [8],
-      // override vrt
-      vrt: 100.0,
     },
     {
       index: 1,
       name: "$t_2$",
-      lambda: 1.5,
+      computation: 8,
       arrival: 0,
       events: [8],
-      vrt: 100.5,
     },
     {
       index: 2,
       name: "$t_3$",
-      lambda: 0.5,
+      computation: 8,
       arrival: 0,
       events: [8],
-      vrt: 101.0,
     },
   ],
   graphics: {
@@ -46,41 +46,32 @@ let schedule1: CFSPlan = {
   },
 };
 
-let schedule0: CFSPlan = {
+let schedule0: SimPlan = {
   timer: 0.5,
   runfor: 8,
-  class: {
-    type: "CFS",
-    latency: 6.0,
-    mingran: 0.75,
-    wgup: 1,
-  },
+  class: FIFOSchedClass,
 
   tasks: [
     {
       index: 0,
       name: "$t_1$",
-      lambda: 1,
+      computation: 8,
       arrival: 0,
       events: [8],
-      // override vrt
-      vrt: 100.0,
     },
     {
       index: 1,
       name: "$t_2$",
-      lambda: 1,
+      computation: 8,
       arrival: 0,
       events: [8],
-      vrt: 100.5,
     },
     {
       index: 2,
       name: "$t_3$",
-      lambda: 1,
+      computation: 8,
       arrival: 0,
       events: [8],
-      vrt: 101.0,
     },
   ],
   graphics: {
@@ -90,41 +81,32 @@ let schedule0: CFSPlan = {
   },
 };
 
-let schedule2: CFSPlan = {
+let schedule2: SimPlan = {
   timer: 0.5,
   runfor: 12,
-  class: {
-    type: "CFS",
-    latency: 6.0,
-    mingran: 0.75,
-    wgup: 1,
-  },
+  class: FIFOSchedClass,
 
   tasks: [
     {
       index: 0,
       name: "$t_1$",
-      lambda: 1,
+      computation: 9,
       arrival: 0,
       events: [1, 5, 8],
-      // override vrt
-      vrt: 100.0,
     },
     {
       index: 1,
       name: "$t_2$",
-      lambda: 1,
+      computation: 20,
       arrival: 0,
       events: [14],
-      vrt: 100.5,
     },
     {
       index: 2,
       name: "$t_3$",
-      lambda: 1,
+      computation: 8,
       arrival: 0,
       events: [3, 1, 10],
-      vrt: 101.0,
     },
   ],
   graphics: {
@@ -134,41 +116,32 @@ let schedule2: CFSPlan = {
   },
 };
 
-let schedule3: CFSPlan = {
+let schedule3: SimPlan = {
   timer: 0.5,
   runfor: 24,
-  class: {
-    type: "CFS",
-    latency: 6.0,
-    mingran: 0.75,
-    wgup: 1,
-  },
+  class: FIFOSchedClass,
 
   tasks: [
     {
       index: 0,
       name: "$t_1$",
-      lambda: 1,
+      computation: 16,
       arrival: 0,
       events: [1, 2, 3, 4, 8],
-      // override vrt
-      vrt: 100.0,
     },
     {
       index: 1,
       name: "$t_2$",
-      lambda: 1,
+      computation: 16,
       arrival: 0,
       events: [2, 2, 2, 3, 1],
-      vrt: 100.5,
     },
     {
       index: 2,
       name: "$t_3$",
-      lambda: 1,
+      computation: 16,
       arrival: 0,
       events: [3, 1, 2, 3, 1],
-      vrt: 101.0,
     },
   ],
   graphics: {
@@ -178,30 +151,37 @@ let schedule3: CFSPlan = {
   },
 };
 
-let schedule4: CFSPlan = {
+let schedule4: SimPlan = {
   timer: 0.5,
   runfor: 16,
-  class: { type: "CFS", latency: 6.0, mingran: 0.75, wgup: 1 },
+  class: FIFOSchedClass,
   tasks: [
-    { index: 0, name: "R", lambda: 4, arrival: 0, events: [8], vrt: 0.0 },
-    { index: 1, name: "S", lambda: 1, arrival: 0, events: [8], vrt: 0.0 },
-    { index: 2, name: "T", lambda: 1, arrival: 0, events: [8], vrt: 0.0 },
+    { index: 0, name: "R", computation: 8, arrival: 0, events: [8] },
+    { index: 1, name: "S", computation: 8, arrival: 0, events: [8] },
+    { index: 2, name: "T", computation: 8, arrival: 0, events: [8] },
   ],
   graphics: { vspace: 1, hspace: 1, barheight: 0.5 },
 };
 
-let plans: CFSPlan[] = [
+let plansFIFO: SimPlan[] = [
   schedule0,
   schedule1,
   schedule2,
   schedule3,
   schedule4,
-  // { ...schedule2, timer: 0.25 },
-  // { ...schedule0, runfor: 30 },
-  // { ...schedule2, runfor: 40 },
-  // { ...schedule2, timer: 0.25, runfor: 40 },
-  // { ...schedule1, runfor: 40 },
 ];
 
-//module.exports = { plans };
-export { plans };
+const plansSJF: SimPlan[] = _.map(plansFIFO, p => {
+  const copy = _.cloneDeep(p);
+  copy.class = SJFSchedClass;
+  return copy;
+});
+
+const plansSRTF: SimPlan[] = _.map(plansFIFO, p => {
+  const copy = _.cloneDeep(p);
+  copy.class = SRTFSchedClass;
+  return copy;
+});
+
+//module.exports = { plansFIFO, plansSJF, plansSRTF };
+export { plansFIFO, plansSJF, plansSRTF };
