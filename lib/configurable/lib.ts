@@ -50,22 +50,25 @@ type SchedClass = {
   type: string;
   // Name of the metric used to order the runqueue
   metric: string;
-  // Predicate with the condition required for preemption,
+  // Predicate with the condition required for preemption on wakeup,
   // always return False to disable preemption!
-  preempt: (t: TaskState, s: State) => boolean;
+  preempt_wakeup: (t: TaskState, s: State) => boolean;
+  // Predicate with the condition required for preemption on timer tick,
+  // always return False to disable preemption!
+  preempt_tick: (t: TaskState, s: State) => boolean;
   // Returns the metric w.r.t. which the scheduling is performed
   schedmetric: (t?: TaskState) => number;
   // Order relation over the runqueue, modify it to change the scheduler type,
   // return true if t1 < t2
   order: (t1?: TaskState, t2?: TaskState) => boolean
-  // ADD HERE q for RR !!
 };
 
 const FIFOSchedClass : SchedClass = {
   type: "FIFO",
   metric: "enqueue time",
   // No preemption
-  preempt: (t: TaskState, s: State) => false,
+  preempt_wakeup: (t: TaskState, s: State) => false,
+  preempt_tick: (t: TaskState, s: State) => false,
   // Gives the time at which the task has been placed in the runqueue
   schedmetric: (t?: TaskState) => t ? t.enqueue : +Infinity,
   order: (t1?: TaskState, t2?: TaskState) => FIFOSchedClass.schedmetric(t1) < FIFOSchedClass.schedmetric(t2)
@@ -75,7 +78,8 @@ const SJFSchedClass : SchedClass = {
   type: "SJF",
   metric: "required computation time",
   // No preemption
-  preempt: (t: TaskState, s: State) => false,
+  preempt_wakeup: (t: TaskState, s: State) => false,
+  preempt_tick: (t: TaskState, s: State) => false,
   // Computes the required computation time for a task
   schedmetric: (t?: TaskState) => t ? t.computation - t.sum : +Infinity,
   order: (t1?: TaskState, t2?: TaskState) => SJFSchedClass.schedmetric(t1) < SJFSchedClass.schedmetric(t2)
@@ -85,10 +89,22 @@ const SRTFSchedClass : SchedClass = {
   type: "SRTF",
   metric: "remaining computation time",
   // Preempt if the new task has lower remaining computation time
-  preempt: (t: TaskState, s: State) => SRTFSchedClass.order(t, s.curr),
+  preempt_wakeup: (t: TaskState, s: State) => SRTFSchedClass.order(t, s.curr),
+  preempt_tick: (t: TaskState, s: State) => false,
   // Computes the remaining computation time for a task
   schedmetric: (t?: TaskState) => t ? t.computation - t.sum : +Infinity,
   order: (t1?: TaskState, t2?: TaskState) => SRTFSchedClass.schedmetric(t1) < SRTFSchedClass.schedmetric(t2)
+};
+
+const RRSchedClass : SchedClass = {
+  type: "RR",
+  metric: "time quantum",
+  // Preempt if the current task has finished its time quantum
+  preempt_wakeup: (t: TaskState, s: State) => false,
+  preempt_tick: (t: TaskState, s: State) => (t.sum - t.prev) >= s.origplan.attributes["quantum"],
+  // Computes the remaining computation time for a task
+  schedmetric: (t?: TaskState) => t ? t.enqueue : +Infinity,
+  order: (t1?: TaskState, t2?: TaskState) => RRSchedClass.schedmetric(t1) < RRSchedClass.schedmetric(t2)
 };
 
 type SimPlan = Plan<PlannedTask, SchedClass>;
@@ -177,8 +193,6 @@ let eventLoop = (
     // Update available time slices of the tasks, if no task is currently running,
     // run the first task in the runqueue (mark it with "X")
     schedstate.runqueue = _.map(schedstate.runqueue, (t) => {
-      // MODIFY THE timeslice HERE FOR RR !!
-      //t.q = schedslice(t);
       if (!_.isUndefined(schedstate.curr) && schedstate.curr.index == t.index) {
         t.R = "X";
       } else {
@@ -221,10 +235,6 @@ let eventLoop = (
     }
   };
 
-  // WRITE THIS FOR RR !!
-  // Computes the time slice for a given task according to the tasks currently in the runqueue
-  //let schedslice = (t: TaskState) => taskstates.class.quantum ...;
-
   // Moves a task among the scheduled ones, in the runqueue.
   // Call reschedule if the added task qualifies for immediate execution
   let _start_task = (t: TaskState) => {
@@ -232,7 +242,7 @@ let eventLoop = (
     t.prev = 0;
     // DOUBLE CHECK THIS!! Maybe use schedstate.runqueue.push(t)?
     addToRunqueue(t);
-    if (schedstate.curr === undefined || taskstates.class.preempt(t, schedstate)) {
+    if (schedstate.curr === undefined || taskstates.class.preempt_wakeup(t, schedstate)) {
       resched(`starting task ${t.name} @${timer.walltime}`);
     }
   };
@@ -258,13 +268,10 @@ let eventLoop = (
   // Add task to the runqueue (respecting the queue's order),
   // uses the scheduler's predicate to infer the order relation
   let addToRunqueue = (task: TaskState) => {
-    schedstate.runqueue.splice(
-      schedstate.runqueue.findIndex((t) => taskstates.class.order(task, t)),
-      0,
-      task
-    );
     task.enqueue = timer.walltime;
     task.wait = 0;
+    schedstate.runqueue.push(task);
+    schedstate.runqueue.sort((a, b) => (taskstates.class.order(a, b) ? -1 : 1))
   };
 
   // Wakeup task, moving it from the blocked list to the runqueue,
@@ -284,7 +291,7 @@ let eventLoop = (
     tw.text.message += ")";
 
     // Check for preemption (invoke resched if it occurs)
-    if (schedstate.curr !== undefined && taskstates.class.preempt(tw, schedstate)) {
+    if (schedstate.curr !== undefined && taskstates.class.preempt_wakeup(tw, schedstate)) {
       // Preemption as per the SchedClass's rules
       tw.text.message += " preempt",
       tw.text.color = "red";
@@ -352,19 +359,17 @@ let eventLoop = (
           resched(`exiting task ${schedstate.curr.name} @${timer.walltime}`);
         }
 
-        // ENABLE THIS FOR RR !!
         // If the current time slice has expired, update the runqueue and schedule the next task
-        /*if (schedstate.curr.sum - schedstate.curr.prev >= quantum) {
-          removeFromRbt(schedstate.curr);
-          addToRbt(schedstate.curr);
+        if (taskstates.class.preempt_tick(schedstate.curr, schedstate)) {
+          // The current task goes to sleep
+          let ts = schedstate.curr;
+          removeFromRunqueue(schedstate.curr);
+          addToRunqueue(schedstate.curr);
+          // Run the next task
           resched(`task ${schedstate.curr.name} finished quantum @${timer.walltime}`);
-        }*/
-      }
-
-      // Event triggered on the currently running task
-      // CHANGED FROM: === 0
-      // NOTE: yeah, this could be an "else" XD
-      if (schedstate.curr.events[0] <= 0) {
+        }
+      } else {
+        // Event triggered on the currently running task
         // The current task goes to sleep
         let ts = schedstate.curr;
         removeFromRunqueue(schedstate.curr);
@@ -388,20 +393,24 @@ let eventLoop = (
   };
 
   let exitCurrentTask = () => {
-    let v = _.find(
-      taskstates.tasks,
-      (t) => t.index === (schedstate.curr ? schedstate.curr.index : 0)
-    );
-    if (v) {
-      v.exited = timer.walltime;
-    }
+    if (schedstate.curr !== undefined) {
+      let v = _.find(
+        taskstates.tasks,
+        (t) => t.index === (schedstate.curr ? schedstate.curr.index : 0)
+      );
+      if (v) {
+        v.exited = timer.walltime;
+      }
+  
+      let vp = _.find(
+        schedstate.origplan.tasks,
+        (t) => t.index === (schedstate.curr ? schedstate.curr.index : 0)
+      );
+      if (vp) {
+        vp.exited = timer.walltime;
+      }
 
-    let vp = _.find(
-      schedstate.origplan.tasks,
-      (t) => t.index === (schedstate.curr ? schedstate.curr.index : 0)
-    );
-    if (vp) {
-      vp.exited = timer.walltime;
+      removeFromRunqueue(schedstate.curr);
     }
   };
 
@@ -576,8 +585,7 @@ let serialiseSim = (
               if (nextState) {
                 // Write at time "time" the text decorating the task 
                 tslot.belowSlot = nextState.schedmetric + "";
-                // USE THIS WITH RR `${nextState.sum - t.p}/${r2(t.q)}`
-                tslot.inSlot = t.event === "RAN" ? `${nextState.sum - t.p}}` : "";
+                tslot.inSlot = t.event === "RAN" ? (simPlan.class == RRSchedClass ? `${nextState.sum - t.p}/${r2(simPlan.attributes["quantum"])}` : `${nextState.sum - t.p}}`) : "";
               }
               return tslot;
             }
@@ -595,6 +603,7 @@ let serialiseSim = (
     graphics: simPlan.graphics,
     tasks: [],
     class: {},
+    attributes: {}
   };
 
   plan.tasks = _.map(simPlan.tasks, (t) => {
@@ -620,4 +629,4 @@ produceSchedule = function (
   return eventLoop(options, plan as SimPlan, logger).simData;
 };
 
-export { eventLoop, produceSchedule, SimPlan, FIFOSchedClass, SJFSchedClass, SRTFSchedClass };
+export { eventLoop, produceSchedule, SimPlan, FIFOSchedClass, SJFSchedClass, SRTFSchedClass, RRSchedClass };
