@@ -1,4 +1,4 @@
-import { SimPlan, FIFOSchedClass, SJFSchedClass, SRTFSchedClass, HRRNSchedClass, RRSchedClass } from "./lib";
+import { SimPlan, GenericSimPlan, FIFOSchedClass, SJFSchedClass, SRTFSchedClass, RRSchedClass, HRRNSchedClass } from "./lib";
 
 import _ from "lodash";
 
@@ -11,11 +11,12 @@ There are two ways a task can end:
 Events alternate, the first is a sleep, then a wakeup, then sleep, ...
 */
 
-let schedule0: SimPlan = {
+let schedule1: GenericSimPlan = {
   timer: 0.5,
   runfor: 8,
-  class: FIFOSchedClass,
-  attributes: {},
+  attributes: {
+    "quantum": 1.5
+  },
 
   tasks: [
     {
@@ -47,11 +48,12 @@ let schedule0: SimPlan = {
   },
 };
 
-let schedule1: SimPlan = {
+let schedule0: GenericSimPlan = {
   timer: 0.5,
   runfor: 8,
-  class: FIFOSchedClass,
-  attributes: {},
+  attributes: {
+    "quantum": 1.5
+  },
 
   tasks: [
     {
@@ -59,21 +61,21 @@ let schedule1: SimPlan = {
       name: "$t_1$",
       computation: 8,
       arrival: 0,
-      events: [1],
+      events: [8],
     },
     {
       index: 1,
       name: "$t_2$",
       computation: 8,
       arrival: 0,
-      events: [2],
+      events: [8],
     },
     {
       index: 2,
       name: "$t_3$",
       computation: 8,
       arrival: 0,
-      events: [3],
+      events: [8],
     },
   ],
   graphics: {
@@ -83,11 +85,12 @@ let schedule1: SimPlan = {
   },
 };
 
-let schedule2: SimPlan = {
+let schedule2: GenericSimPlan = {
   timer: 0.5,
   runfor: 12,
-  class: FIFOSchedClass,
-  attributes: {},
+  attributes: {
+    "quantum": 1.5
+  },
 
   tasks: [
     {
@@ -109,7 +112,7 @@ let schedule2: SimPlan = {
       name: "$t_3$",
       computation: 8,
       arrival: 0,
-      events: [3, 1, 10],
+      events: [3, 2, 10],
     },
   ],
   graphics: {
@@ -119,11 +122,12 @@ let schedule2: SimPlan = {
   },
 };
 
-let schedule3: SimPlan = {
+let schedule3: GenericSimPlan = {
   timer: 0.5,
   runfor: 24,
-  class: FIFOSchedClass,
-  attributes: {},
+  attributes: {
+    "quantum": 1.5
+  },
 
   tasks: [
     {
@@ -155,11 +159,47 @@ let schedule3: SimPlan = {
   },
 };
 
-let schedule4: SimPlan = {
+let schedule4: GenericSimPlan = {
+  timer: 0.5,
+  runfor: 12,
+  attributes: {},
+
+  tasks: [
+    {
+      index: 0,
+      name: "$t_1$",
+      computation: 4,
+      arrival: 0,
+      events: [1, 5, 8],
+    },
+    {
+      index: 1,
+      name: "$t_2$",
+      computation: 4,
+      arrival: 0,
+      events: [3.5],
+    },
+    {
+      index: 2,
+      name: "$t_3$",
+      computation: 1,
+      arrival: 2,
+      events: [2, 1, 1],
+    },
+  ],
+  graphics: {
+    vspace: 1,
+    hspace: 1,
+    barheight: 0.5,
+  },
+};
+
+let schedule5: GenericSimPlan = {
   timer: 0.5,
   runfor: 16,
-  class: FIFOSchedClass,
-  attributes: {},
+  attributes: {
+    "quantum": 1.5
+  },
   tasks: [
     { index: 0, name: "R", computation: 8, arrival: 0, events: [8] },
     { index: 1, name: "S", computation: 8, arrival: 0, events: [8] },
@@ -168,39 +208,14 @@ let schedule4: SimPlan = {
   graphics: { vspace: 1, hspace: 1, barheight: 0.5 },
 };
 
-let plansFIFO: SimPlan[] = [
+let allPlans: GenericSimPlan[] = [
   schedule0,
   schedule1,
   schedule2,
   schedule3,
   schedule4,
+  schedule5,
 ];
 
-const plansSJF: SimPlan[] = _.map(plansFIFO, p => {
-  const copy = _.cloneDeep(p);
-  copy.class = SJFSchedClass;
-  return copy;
-});
-
-const plansSRTF: SimPlan[] = _.map(plansFIFO, p => {
-  const copy = _.cloneDeep(p);
-  copy.class = SRTFSchedClass;
-  return copy;
-});
-
-const plansHRRN: SimPlan[] = _.map(plansFIFO, p => {
-  const copy = _.cloneDeep(p);
-  copy.class = HRRNSchedClass;
-  return copy;
-});
-
-const plansRR: SimPlan[] = _.map(plansFIFO, p => {
-  const copy = _.cloneDeep(p);
-  copy.class = RRSchedClass;
-  copy.attributes = {
-    "quantum": 1.5
-  }
-  return copy;
-});
-
-export { plansFIFO, plansSJF, plansSRTF, plansHRRN, plansRR };
+//module.exports = { plansFIFO, plansSJF, plansSRTF };
+export { allPlans };
