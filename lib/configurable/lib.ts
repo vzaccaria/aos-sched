@@ -39,10 +39,13 @@ type TaskState = PlannedTask & {
 };
 
 type SimTaskSlot = TaskSlot & {
+  // Same as "sum" in TaskState
   sum: number;
+  // Same as "wait" in TaskState
   wait: number;
   // Metric depending on SchedClass
   schedmetric: number;
+  // Same as "prev" in TaskState
   p: number;
 };
 
@@ -80,7 +83,7 @@ function schedClassFromString(schedclass: string) {
 }
 
 const FIFOSchedClass : SchedClass = {
-  type: "FIFO",
+  type: "fifo",
   metric: "enqueue time",
   // No preemption
   preempt_wakeup: (t: TaskState, s: State) => false,
@@ -91,7 +94,7 @@ const FIFOSchedClass : SchedClass = {
 };
 
 const SJFSchedClass : SchedClass = {
-  type: "SJF",
+  type: "sjf",
   metric: "required computation time",
   // No preemption
   preempt_wakeup: (t: TaskState, s: State) => false,
@@ -102,7 +105,7 @@ const SJFSchedClass : SchedClass = {
 };
 
 const SRTFSchedClass : SchedClass = {
-  type: "SRTF",
+  type: "srtf",
   metric: "remaining computation time",
   // Preempt if the new task has lower remaining computation time
   preempt_wakeup: (t: TaskState, s: State) => SRTFSchedClass.order(t, s.curr),
@@ -113,7 +116,7 @@ const SRTFSchedClass : SchedClass = {
 };
 
 const HRRNSchedClass : SchedClass = {
-  type: "HRRN",
+  type: "hrrn",
   metric: "response ratio",
   // No preemption
   preempt_wakeup: (t: TaskState, s: State) => false,
@@ -125,7 +128,7 @@ const HRRNSchedClass : SchedClass = {
 };
 
 const RRSchedClass : SchedClass = {
-  type: "RR",
+  type: "rr",
   metric: "time quantum",
   // Preempt if the current task has finished its time quantum
   preempt_wakeup: (t: TaskState, s: State) => false,
@@ -474,7 +477,7 @@ let eventLoop = (
 
   return {
     rawSimData: rawSchedule, // <- this is the one being tested by jest
-    simData: serialiseSim(rawSchedule, taskstates), // this is the serialised format
+    simData: serialiseSim(rawSchedule, taskstates, origplan), // this is the serialised format
   };
 };
 
@@ -485,7 +488,7 @@ let printData = (plan: SimPlan) => {
       return [
         `\\item task ${t.name} (\\length = ${t.computation}) arrives at ${t.arrival}, ` +
           _.join(
-            _.map(t.events, (e, i) =>
+            _.map(t.events, (e, i) => 
               i % 2 === 0 ? `runs for ${e}` : `waits for ${e}`
             ),
             ", "
@@ -496,18 +499,19 @@ let printData = (plan: SimPlan) => {
   );
   let s = `
   \\begin{itemize}
-  \\item Schedule data: type = ${plan.class.type}, metric = ${plan.class.metric}
+  \\item Schedule data: type = ${plan.class.type}, metric = ${plan.class.metric}, ${_.map(plan.attributes, (value, key) => `${key} = ${value}`).join(', ')}
   ${taskevents}
   \\end{itemize}`;
 
-  let legendAbove = `Schedule data: type = ${plan.class.type}, metric = ${plan.class.metric}`;
+  let legendAbove = `Schedule data: type = ${plan.class.type}, metric = ${plan.class.metric}, ${_.map(plan.attributes, (value, key) => `${key} = ${value}`).join(', ')}`;
 
   return { blankData: s, legendAbove };
 };
 
 let serialiseSim = (
   stateSnapshots: TaskStateSnapshot[],
-  simPlan: TasksState
+  simPlan: TasksState,
+  origPlan: SimPlan
 ): Schedule => {
   // assume we always start from 0
 
@@ -660,9 +664,9 @@ let serialiseSim = (
               if (nextState) {
                 // Write at time "time" the text decorating the task 
                 tslot.belowSlot = nextState.schedmetric + "";
-                tslot.inSlot = t.event === "RAN" ? (simPlan.class == RRSchedClass ? `${nextState.sum - t.p}/${r2(simPlan.attributes["quantum"])}` : `${nextState.sum - t.p}`) : "";
+                tslot.inSlot = t.event === "RAN" ? (simPlan.class == RRSchedClass ? `\$\\frac{${nextState.sum - t.p}}{${r2(simPlan.attributes["quantum"])}}\$` : `\$${nextState.sum - t.p}\$`) : "";
               } else { // Last tick for the task, no nextState, it ends!
-                tslot.inSlot = t.event === "RAN" ? (simPlan.class == RRSchedClass ? `${t.sum + simPlan.timer - t.p}/${r2(simPlan.attributes["quantum"])}` : `${t.sum + simPlan.timer - t.p}`) : "";
+                tslot.inSlot = t.event === "RAN" ? (simPlan.class == RRSchedClass ? `\$\\frac{${t.sum + simPlan.timer - t.p}}{${r2(simPlan.attributes["quantum"])}}\$` : `\$${t.sum + simPlan.timer - t.p}\$`) : "";
               }
               return tslot;
             }
@@ -673,7 +677,7 @@ let serialiseSim = (
     })
   );
 
-  let scheddata = printData(simPlan);
+  let scheddata = printData(origPlan);
   let plan: Plan<ScheduledTask, NoClass> = {
     timer: simPlan.timer,
     runfor: simPlan.runfor,
@@ -706,4 +710,4 @@ produceSchedule = function (
   return eventLoop(options, plan as SimPlan, logger).simData;
 };
 
-export { eventLoop, produceSchedule, SimPlan, GenericSimPlan, FIFOSchedClass, SJFSchedClass, SRTFSchedClass, RRSchedClass, HRRNSchedClass, schedClassFromString };
+export { eventLoop, produceSchedule, SimPlan, GenericSimPlan, PlannedTask, FIFOSchedClass, SJFSchedClass, SRTFSchedClass, RRSchedClass, HRRNSchedClass, schedClassFromString };

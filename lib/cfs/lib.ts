@@ -39,17 +39,23 @@ type CFSTaskState = CFSPlannedTask & {
 };
 
 type CFSTaskSlot = TaskSlot & {
+  // Virtual runtime
   vrt: number;
+  // Same as "sum" in CFSTaskState
   sum: number;
+  // Same as "prev" in CFSTaskState
   p: number;
+  // Available time quantum/slice
   q: number;
 };
 
 type CFSClass = {
+  // Name of the scheduling class
   type: string;
   // Wake up granularity
   wgup: number;
   latency: number;
+  // Minimum granularity
   mingran: number;
 };
 
@@ -143,10 +149,32 @@ let eventLoop = (
       e.func(e.arg);
     });
 
-    // Update available time slices of the tasks, if no task is currently running,
-    // run the left-most task in the rbtree (mark it with "X")
+    // Update available time slices of the tasks
     schedstate.rbt = _.map(schedstate.rbt, (t) => {
       t.q = schedslice(t);
+      return t;
+    });
+    
+    // If no task is currently running, run the first task in the runqueue
+    // If the current time slice has expired, update the rbtree and schedule the next task
+    // Note: this is required because the above ^ _map might update time slices after a
+    // wakeup, and this handles the case of such update causing a time slice to end
+    if (!_.isUndefined(schedstate.curr)) {
+      if (schedstate.curr.sum - schedstate.curr.prev >= schedslice(schedstate.curr)) {
+        schedstate.curr.vrtlwk = {
+          message: `(new t.s. = ${schedstate.curr.q}) t.s. ended`,
+          color: "black",
+        };
+        removeFromRbt(schedstate.curr);
+        addToRbt(schedstate.curr);
+        resched(`task ${schedstate.curr.name} finished quantum @${timer.walltime}`);
+      }
+    } else {
+      resched(`no task running @${timer.walltime}`);
+    }
+    
+    // Mark the currently running task (for the diagram)
+    schedstate.rbt = _.map(schedstate.rbt, (t) => {
       if (!_.isUndefined(schedstate.curr) && schedstate.curr.index == t.index) {
         t.R = "X";
       } else {
@@ -196,7 +224,7 @@ let eventLoop = (
 
   // Computes the time slice for a given task according to the tasks currently in the rbtree
   let schedslice = (t: CFSTaskState) =>
-    taskstates.class.latency * (t.lambda / sumlambda());
+    Math.max(taskstates.class.latency * (t.lambda / sumlambda()), taskstates.class.mingran);
 
   // Moves a task among the scheduled ones, in the rbtree.
   // Call reschedule if the added task qualifies for immediate execution
@@ -207,7 +235,9 @@ let eventLoop = (
     // WARNING: this should be done with "addToRbt" after the next "if" that sets the vrt,
     // otherwise an eventual "resched" with more than 1 task in the rbtree places in execution
     // the wrong task due to the push that simply appends!
-    schedstate.rbt.push(t);
+    //schedstate.rbt.push(t);
+    // This should fix it!
+    addToRbt(t);
     if (_.isUndefined(t.vrt)) {
       t.vrt = _.defaultTo(schedstate.vmin, 0) + schedslice(t) / t.lambda;
     }
@@ -216,13 +246,46 @@ let eventLoop = (
       t.vrt + taskstates.class.wgup * (t.lambda / sumlambda()) <
         schedstate.curr.vrt
     ) {
-      if(!_.isUndefined(schedstate.curr)) {
+      // If the task has yet to run for at least mingran
+      // postpone the preemption with an event
+      if (!_.isUndefined(schedstate.curr) && schedstate.curr.sum - schedstate.curr.prev < taskstates.class.mingran) {
         t.vrtlwk = {
-          message: `(${t.vrt} < ${schedstate.curr.vrt}) X`,
-          color: "red",
+          message: `(${t.vrt} < ${schedstate.curr.vrt}) mingran`,
+          color: "magenta",
         };
+        _setTimeout(
+          (args) => {
+            let t = args[0];
+            let old_curr_idx = args[1];
+            let old_curr_prev = args[2];
+            let m = args[3];
+            // The running task changed, abort the old preemption
+            // (Identify the task via its index, identify its unique
+            // "running window" via "prev")
+            if(
+              !_.isUndefined(schedstate.curr) &&
+              schedstate.curr.index === old_curr_idx &&
+              schedstate.curr.prev === old_curr_prev) {
+              t.vrtlwk = {
+                message: `(${t.vrt} < ${schedstate.curr.vrt}) preempt`,
+                color: "red",
+              };
+              resched(m);
+            }
+          },
+          taskstates.class.mingran - (schedstate.curr.sum - schedstate.curr.prev),
+          [t, schedstate.curr.index, schedstate.curr.prev, `Waking up task ${t.name} @${timer.walltime} (preemption delayed by mingran)`],
+          "_mingran_preempt");
+      } else {
+        // Mingran already expired, preempt now
+        if(!_.isUndefined(schedstate.curr)) {
+          t.vrtlwk = {
+            message: `(${t.vrt} < ${schedstate.curr.vrt}) preempt`,
+            color: "red",
+          };
+        }
+        resched(`Waking up task ${t.name} @${timer.walltime}`);
       }
-      resched(`starting task ${t.name} @${timer.walltime}`);
     }
   };
 
@@ -266,9 +329,9 @@ let eventLoop = (
     // Next virtual runtime for the woken up task
     let v = r2(tw.vrt + taskstates.class.wgup * (tw.lambda / sumlambda()));
     // WARNING: useless to set this here...
-    if (!_.isUndefined(schedstate.curr)) {
-      tw.vrtlwk = { message: `${v} < ${schedstate.curr.vrt}`, color: "black" };
-    }
+    //if (!_.isUndefined(schedstate.curr)) {
+    //  tw.vrtlwk = { message: `${v} < ${schedstate.curr.vrt}`, color: "black" };
+    //}
 
     // Note: a preemption will happen iif the next virtual runtime of the woken up
     // task is lower than the vrt of the currently running task or if there is no
@@ -277,16 +340,50 @@ let eventLoop = (
     // Check for preemption (invoke resched if it occurs)
     if (schedstate.curr !== undefined && v < schedstate.curr.vrt) {
       // Preemption due to lower next virtual runtime
-      tw.vrtlwk = {
-        message: `(${v} < ${schedstate.curr.vrt}) OK`,
-        color: "blue",
-      };
       logger.debug(`HEII ${v} ---- ${schedstate.curr.vrt}`);
       // Rebuild the runqueue's order
       // WARNING: not necessary to do this remove+add?
       removeFromRbt(schedstate.curr);
       addToRbt(schedstate.curr);
-      resched(`Waking up task ${tw.name} @${timer.walltime}`);
+      // If the task has yet to run for at least mingran
+      // postpone the preemption with an event
+      if (schedstate.curr.sum - schedstate.curr.prev < taskstates.class.mingran) {
+        tw.vrtlwk = {
+          message: `(${tw.vrt} < ${schedstate.curr.vrt}) mingran`,
+          color: "magenta",
+        };
+        // Schedule an event to handle the future (possible) preemption
+        _setTimeout(
+          (args) => {
+            let t = args[0];
+            let old_curr_idx = args[1];
+            let old_curr_prev = args[2];
+            let m = args[3];
+            // The running task changed, abort the old preemption
+            // (Identify the task via its index, identify its unique
+            // "running window" via "prev")
+            if(
+              !_.isUndefined(schedstate.curr) &&
+              schedstate.curr.index === old_curr_idx &&
+              schedstate.curr.prev === old_curr_prev) {
+              t.vrtlwk = {
+                message: `(${t.vrt} < ${schedstate.curr.vrt}) preempt`,
+                color: "red",
+              };
+              resched(m);
+            }
+          },
+          taskstates.class.mingran - (schedstate.curr.sum - schedstate.curr.prev),
+          [tw, schedstate.curr.index, schedstate.curr.prev, `Waking up task ${tw.name} @${timer.walltime} (preemption delayed by mingran)`],
+          "_mingran_preempt");
+      } else {
+        // Mingran already expired, preempt now
+        tw.vrtlwk = {
+          message: `(${v} < ${schedstate.curr.vrt}) preempt`,
+          color: "red",
+        };
+        resched(`Waking up task ${tw.name} @${timer.walltime}`);
+      }
     } else {
       // Preemption because no currently running task
       if (schedstate.curr === undefined)
@@ -294,8 +391,8 @@ let eventLoop = (
       else {
         // No preemption
         tw.vrtlwk = {
-          message: `(${v} < ${schedstate.curr.vrt}) X`,
-          color: "red",
+          message: `(${v} < ${schedstate.curr.vrt}) cont`,
+          color: "blue",
         };
       }
     }
@@ -352,7 +449,8 @@ let eventLoop = (
         // If the current time slice has expired, update the rbtree and schedule the next task
         if (
           // WARNING: wouldn't >= 0 be safer ?
-          schedstate.curr.sum - schedstate.curr.prev == schedslice(schedstate.curr) &&
+          // Indeed, otherwise supporting mingran breaks this!
+          schedstate.curr.sum - schedstate.curr.prev >= schedslice(schedstate.curr) &&
           // WARNING: isn't this one obvious due to the outer if?
           schedstate.curr.events[0] > 0
         ) {
@@ -403,7 +501,7 @@ let eventLoop = (
 
   // For every task, schedule its start event at the start of the simulation
   _.map(taskstates.tasks, (t) => {
-    _setTimeout(_start_task, t.arrival, t, "_start_task");
+    _setTimeout(_start_task, t.arrival === 0 ? t.arrival : t.arrival + taskstates.timer, t, "_start_task");
   });
 
   // Schedule the first occurrence of the tick event (afterwwards it automatically re-schedules itself)
@@ -418,7 +516,7 @@ let eventLoop = (
 
   return {
     rawSimData: rawSchedule, // <- this is the one being tested by jest
-    simData: serialiseSim(rawSchedule, taskstates), // this is the serialised format
+    simData: serialiseSim(rawSchedule, taskstates, origplan), // this is the serialised format
   };
 };
 
@@ -430,7 +528,7 @@ let printData = (plan: CFSPlan) => {
         `\\item task ${t.name} (\\lambda = ${t.lambda}) inizia a ${t.arrival}, ` +
           _.join(
             _.map(t.events, (e, i) =>
-              i % 2 === 0 ? `gira per ${e}` : `in attesa per ${e}`
+              i % 2 === 0 ? `runs for ${e}` : `waits for ${e}`
             ),
             ", "
           ),
@@ -451,7 +549,8 @@ let printData = (plan: CFSPlan) => {
 
 let serialiseSim = (
   cfsStateSnapshots: CFSTaskStateSnapshot[],
-  cfsPlan: CFSStateTaskInfo
+  cfsPlan: CFSStateTaskInfo,
+  origPlan: CFSPlan
 ): Schedule => {
   // assume we always start from 0
 
@@ -568,8 +667,9 @@ let serialiseSim = (
               if (nextState) {
                 // Write at time "time" the text decorating the task 
                 tslot.belowSlot = nextState.vrt + "";
-                tslot.inSlot =
-                  t.event === "RAN" ? `${nextState.sum - t.p}/${r2(t.q)}` : "";
+                tslot.inSlot = t.event === "RAN" ? `\$\\frac{${nextState.sum - t.p}}{${r2(t.q)}}\$` : "";
+              } else { // Last tick for the task, no nextState, it ends!
+                tslot.inSlot = t.event === "RAN" ? `\$\\frac{${t.sum + cfsPlan.timer - t.p}}{${r2(t.q)}}\$` : "";
               }
               return tslot;
             }
@@ -580,7 +680,7 @@ let serialiseSim = (
     })
   );
 
-  let scheddata = printData(cfsPlan);
+  let scheddata = printData(origPlan);
   let plan: Plan<ScheduledTask, NoClass> = {
     timer: cfsPlan.timer,
     runfor: cfsPlan.runfor,
@@ -613,4 +713,4 @@ produceSchedule = function (
   return eventLoop(options, plan as CFSPlan, logger).simData;
 };
 
-export { eventLoop, produceSchedule, CFSPlan };
+export { eventLoop, produceSchedule, CFSPlan, CFSPlannedTask };

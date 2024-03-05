@@ -21,6 +21,8 @@ type GenericPlan<T> = {
   runfor: number;
   graphics: any;
   tasks: T[];
+  // Contains the class type and specific information
+  class: {},
   // A generic dictionary encoding additional scheduling attributes
   attributes: {};
 };
@@ -62,7 +64,7 @@ type ScheduledTask = Task & {
   description: string[]; // actually, only the first two are printed.
 };
 
-type Options = { blank: Boolean };
+type Options = { blank: Boolean, inline: Boolean };
 
 type Schedule = {
   scheddata: {

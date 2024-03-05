@@ -6,18 +6,22 @@ import { SimPlan } from "./configurable/lib";
 class TaskSummaryData {
   arrival: number;
   computation: number;
+  wakeups: number[];
+  sleeps: number[];
   start: number | undefined;
   completion: number | undefined;
   waiting: number | undefined;
   turnaround: number | undefined;
 
-  constructor(arrival: number, computation: number, waiting: number | undefined, completion: number | undefined, start: number | undefined, turnaround: number | undefined) {
+  constructor(arrival: number, computation: number, wakeups: number[], sleeps: number[], waiting: number | undefined, completion: number | undefined, start: number | undefined, turnaround: number | undefined) {
     this.arrival = arrival;
     this.computation = computation;
     this.waiting = waiting;
     this.completion = completion;
     this.start = start;
     this.turnaround = turnaround;
+    this.wakeups = wakeups;
+    this.sleeps = sleeps;
   }
 }
 
@@ -53,6 +57,8 @@ let schedToLatex = (sched: Schedule, options: Options, logger: Logger) => {
   let vs = sched.plan.graphics.vspace;
   let hh = sched.plan.graphics.barheight;
 
+  let text: Array<{ text: String, color: String }> = [];
+
   let printAt = (time: number, index: number, m: string) => {
     return `\\node at(${hs * time}, ${index * hs + 0.5 * hh}) {\\tiny ${m}};`;
   };
@@ -63,14 +69,31 @@ let schedToLatex = (sched: Schedule, options: Options, logger: Logger) => {
     }) {\\tiny ${m}};`;
   };
 
-  let pAboveSlot = (r: TaskSlot) =>
-    !_.isUndefined(r.aboveSlot) && r.aboveSlot.message !== ""
-      ? printAtConf(
+  let pAboveSlot = (r: TaskSlot) => {
+    if (!_.isUndefined(r.aboveSlot) && r.aboveSlot.message !== "") {
+      if (options.inline) {
+        return printAtConf(
           r.tend,
           r.index + 0.4,
           `${r.aboveSlot.message}`,
           `anchor=east, text=${r.aboveSlot.color}`
-        )
+        );
+      } else {
+        text.push({
+          text: `${r.aboveSlot.message}`,
+          color: `${r.aboveSlot.color}`
+        });
+        return `\\node [shape=circle,draw, inner sep=1pt, ${r.aboveSlot.color}]
+          at(${hs * r.tend - 0.3}, ${(r.index + 0.4) * hs + 0.5 * hh}) {\\tiny ${text.length}};`
+      }
+    } else {
+      return "";
+    }
+  }
+
+  let pVertMarker = (r: TaskSlot) =>
+    !_.isUndefined(r.aboveSlot) && r.aboveSlot.message !== ""
+      ? `\\draw[draw=${r.aboveSlot.color}] [|>-] (${r.tstart * hs}, ${r.index} + 0.55) -- (${r.tstart * hs}, ${r.index});`
       : "";
 
   let drawRan = (r: TaskSlot) => {
@@ -81,6 +104,7 @@ let schedToLatex = (sched: Schedule, options: Options, logger: Logger) => {
       printAt(r.tend, r.index - 0.4, r.belowSlot),
       printAt(r.tend - 0.25, r.index, `${r.inSlot}`),
       pAboveSlot(r),
+      pVertMarker(r)
     ];
   };
   let drawBlocked = (r: TaskSlot) => {
@@ -91,10 +115,14 @@ let schedToLatex = (sched: Schedule, options: Options, logger: Logger) => {
         (r.tend - r.tstart) * hs
       },${hh}) node[pos=.5, text=white] {};`,
       pAboveSlot(r),
+      pVertMarker(r)
     ];
   };
   let drawRunnable = (r: TaskSlot) => {
-    return [pAboveSlot(r)];
+    return [
+      pAboveSlot(r),
+      pVertMarker(r)
+    ];
   };
   let diag = _.map(sched.timeline, (x) => {
     if (x.tstart < sched.plan.runfor) {
@@ -150,10 +178,21 @@ let schedToLatex = (sched: Schedule, options: Options, logger: Logger) => {
       "anchor=west"
     ),
   ];
+
+  let aftertext = _.map(text, (t, i) => 
+    `\\node [shape=circle, draw, inner sep=1pt, ${t.color}] (legendNode${i}) at(-1, ${-1.2 - 0.25*i}) {\\tiny ${i + 1}};
+    \\node [right, text=${t.color}] at(legendNode${i}.east) {\\tiny ${t.text}};`
+  );
+  if (text.length > 0) {
+    aftertext.push(
+      `\\node [below] at(0, -0.75) {\\tiny Legend:};`
+    );
+  }
+
   if (_.isUndefined(options.blank) || !options.blank) {
     return wrapper(
       _.join(
-        _.flattenDeep([grid, tnames, diag, taskevents, taskexits, data]),
+        _.flattenDeep([grid, tnames, diag, taskevents, taskexits, data, aftertext]),
         "\n"
       )
     );
@@ -165,7 +204,7 @@ let schedToLatex = (sched: Schedule, options: Options, logger: Logger) => {
 };
 
 let schedToLatexSummary = (sched: Schedule, options: Options, logger: Logger) => {
-  //Get the data for each task
+  // Get the data for each task
   let taskData: TaskSummaryData[] = [];
   if (sched.plan === undefined) {
     // We are extracting a table WITHOUT running a simulation, so we can only have a blank table
@@ -173,20 +212,34 @@ let schedToLatexSummary = (sched: Schedule, options: Options, logger: Logger) =>
     let plan = ((sched as unknown) as SimPlan)
     for (let index = 0; index < plan.tasks.length; index++) {
       const task = plan.tasks[index];
-      taskData.push(new TaskSummaryData(task.arrival, task.events[task.events.length - 1], undefined, undefined, undefined, undefined))
+      let sleeps: number[] = [];
+      let wakeups: number[] = [];
+      let accumulator = 0;
+      for (let i = 0; i < task.events.length; i++) {
+        const event = task.events[i];
+        if (i % 2 == 0) {
+          sleeps.push(event + accumulator);
+        } else {
+          wakeups.push(event);
+        }
+        if (i == 0) {
+          accumulator += event;
+        }
+      }
+      taskData.push(new TaskSummaryData(task.arrival, task.events[task.events.length - 1], sleeps, wakeups, undefined, undefined, undefined, undefined))
     }
   } else {
     // We are extracting a table AFTER a simulation has completed, so we can have both a blank and filled-out (as best as the simulation allows) table
     let slots = sched.timeline;
     for (let index = 0; index < sched.plan.tasks.length; index++) {
       const task = sched.plan.tasks[index];
-      //Find the start & end times
+      // Find the start & end times
       let myslots = slots.filter((v, i, a) => v.index == task.index);
       let start = myslots.find((v, i, o) => v.event === "RAN")?.tstart;
       let end = myslots.find((v, i, o) => v.event === "EXITED")?.tend;
-      //Find the waiting time
+      // Find the waiting time
       let waiting = start !== undefined ? start - task.arrival : undefined;
-      //Find the turnaround
+      // Find the turnaround
       let turnaround = end !== undefined ? end - task.arrival : undefined;
       if (options.blank) {
         start = undefined;
@@ -194,7 +247,21 @@ let schedToLatexSummary = (sched: Schedule, options: Options, logger: Logger) =>
         waiting = undefined;
         turnaround = undefined;
       }
-      taskData.push(new TaskSummaryData(task.arrival, task["computation"], waiting, end, start, turnaround))
+      let sleeps: number[] = [];
+      let wakeups: number[] = [];
+      let accumulator = 0;
+      for (let i = 0; i < task.events.length; i++) {
+        const event = task.events[i];
+        if (i % 2 == 0) {
+          sleeps.push(event + accumulator);
+        } else {
+          wakeups.push(event);
+        }
+        if (i == 0) {
+          accumulator += event;
+        }
+      }
+      taskData.push(new TaskSummaryData(task.arrival, task["computation"], sleeps, wakeups, waiting, end, start, turnaround))
     }
   }
 
@@ -202,8 +269,8 @@ let schedToLatexSummary = (sched: Schedule, options: Options, logger: Logger) =>
   \\centering
   \\caption{Summary of Tasks}
   \\vspace{10pt}
-  \\begin{tabular}{c|c|c|c|c|c|c}
-  Task & Arrival & Computation & Start & Finish & Waiting (W) & Turnaround (Z) \\\\
+  \\begin{tabular}{c|c|c|c|c|c|c|c}
+  Task & Arrival & Computation & Wakeup & Sleep & Start & Finish & Waiting (W) & Turnaround (Z) \\\\
   \\hline`
   for (let index = 0; index < taskData.length; index++) {
     const task = taskData[index];
@@ -211,21 +278,22 @@ let schedToLatexSummary = (sched: Schedule, options: Options, logger: Logger) =>
   }
   begin += `\n\\end{tabular}
   \\label{tab:my_label}
-\\end{table}`;
+\\end{table}
+\\textit{{\\tiny Note: the values in the \\textbf{Sleep} column indicate each running time at which the associated task goes to sleep, an event with time $t$ is to be interpreted as happening when the task has actually ran for $t$ units of time. Instead, values in the \\textbf{Wakeup} column indicate the time after which the task wakes up, counting from the moment it goes to sleep: with an event of value $w$, if the task goes to sleep at absolute time $\\tau$, it will wakeup at absolute time $\\tau + w$. Events are all naturally consumed left-to-right.}}`;
   return begin;
 };
 
-let exportLatex = (sim: Schedule, logger: Logger) => {
+let exportLatex = (sim: Schedule, inline: Boolean, logger: Logger) => {
   return {
     complete: latexArtifact(
-      schedToLatex(sim, { blank: false }, logger),
+      schedToLatex(sim, { blank: false, inline: inline }, logger),
       "rt diagram",
       "standalone",
       "pdflatex",
       "-r varwidth"
     ),
     blank: latexArtifact(
-      schedToLatex(sim, { blank: true }, logger),
+      schedToLatex(sim, { blank: true, inline: inline }, logger),
       "rt diagram blank",
       "standalone",
       "pdflatex",
@@ -244,14 +312,14 @@ let exportLatex = (sim: Schedule, logger: Logger) => {
 let exportLatexSummary = (sim: Schedule, logger: Logger) => {
   return {
     complete: latexArtifact(
-      schedToLatexSummary(sim, { blank: false }, logger),
+      schedToLatexSummary(sim, { blank: false, inline: false }, logger),
       "rt diagram",
       "standalone",
       "pdflatex",
       "-r varwidth"
     ),
     blank: latexArtifact(
-      schedToLatexSummary(sim, { blank: true }, logger),
+      schedToLatexSummary(sim, { blank: true, inline: false }, logger),
       "rt diagram blank",
       "standalone",
       "pdflatex",

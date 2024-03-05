@@ -22,6 +22,8 @@ let tests: Tests = {
   configurable: require("./lib/configurable/fixtures").allPlans as GenericPlan<any>[],
 };
 
+let configurableGenerator = require("./lib/configurable/fixtures").configurableGenerator;
+
 let sims: Simulators = {
   cfs: require("./lib/cfs/lib").produceSchedule as ScheduleProducer,
   configurable: require("./lib/configurable/lib").produceSchedule as ScheduleProducer,
@@ -46,30 +48,80 @@ let main = () => {
       if (args.sched === "cfs") {
         console.log(JSON.stringify(tests.cfs[n]));
       } else {
-        //Inject the scheduler string, then return the JSON
+        // Inject the scheduler string, then return the JSON
         let plan = tests.configurable[n];
-        plan["class"] = args.sched;
+        plan.class["type"] = args.sched;
+        console.log(JSON.stringify(plan));
+      }
+    })
+    .command("gen", "Generate random plan")
+    .argument("<sched>", "Scheduler to use", {
+      validator: ["cfs", "fifo", "sjf", "srtf", "hrrn", "rr"],
+    })
+    .argument("<tasks_count>", "Number of tasks to generate", {
+      validator: program.NUMBER,
+    })
+    .option("--tm <timer>", "Time step for the simulation (default: 0.5)", {
+      validator: program.NUMBER,
+      default: undefined
+    })
+    .option("--rf <runfor>", "Duration of the simulation (default: 12)", {
+      validator: program.NUMBER,
+      default: undefined
+    })
+    .option("--ms <max_sleeps>", "Maximum number of time a task can go to sleep (default: 2)", {
+      validator: program.NUMBER,
+      default: undefined
+    })
+    .option("--mei <max_event_interval>", "Maximum time between a sleep and a wakeup or viceversa (default: 4)", {
+      validator: program.NUMBER,
+      default: undefined
+    })
+    .option("--mat <max_arrival_time>", "Maximum time at which tasks can arrive (default: 6)", {
+      validator: program.NUMBER,
+      default: undefined
+    })
+    .option("--qt <quantum>", "Meaningful only if <sched> = \"rr\", time quantum for round robin (default: 1.5)", {
+      validator: program.NUMBER,
+      default: undefined
+    })
+    .action(({ args, options }) => {
+      if (args.sched === "cfs") {
+        //console.log(JSON.stringify(tests.cfs[n]));
+        throw Error("Feature not yet supported, sorry >.< !");
+      } else {
+        // Invoke the generator
+        let plan = configurableGenerator(
+          args.sched,
+          args.tasksCount,
+          options.tm,
+          options.rf,
+          options.ms,
+          options.mei,
+          options.mat,
+          options.qt
+        );
         console.log(JSON.stringify(plan));
       }
     })
     .command("simulate", "Simulate provided schedule")
-    /*.argument("<sched>", "Scheduler to use", {
-      validator: ["cfs", "fifo", "sjf", "srtf", "rr"],
-    })*/
     .argument("[json]", "JSON file or stdin")
     .action(({ logger, args, options }) => {
       let datap = args.json ? $fs.readFile(args.json, "utf8") : $gstd();
       datap.then(JSON.parse).then((presched: any) => {
-        //Inject the class into the object
-        let class_customizable = presched["class"];
+        // Inject the class into the object
+        let class_customizable = presched.class["type"];
         if (class_customizable !== "cfs") {
-          presched["class"] = schedClassFromString(presched["class"])
+          presched.class = schedClassFromString(presched.class["type"])
+          // Remove useless attributes (otherwise they would get printed...)
+          if(class_customizable !== "rr") {
+            delete presched.attributes.quantum;
+          }
         }
         return presched as Plan<any, any>;
       }).then((sched: Plan<any, any>) => {
         let sim: Schedule;
-        let is_configurable = sched.class instanceof string;
-        if (is_configurable) {
+        if (sched.class.type !== "cfs") {
           sim = sims.configurable(options, sched, logger);
         } else {
           sim = sims.cfs(options, sched, logger);
@@ -78,16 +130,17 @@ let main = () => {
       });
     })
     .command("export", "Export simulation data to available formats")
-    .argument("<artifact>", "Artifact name")
+    .argument("<artifact>", "Artifact name (one of: blank, complete, data)")
     .argument("[json]", "JSON file or stdin")
-    .action(({ logger, args }) => {
+    .option("-i, --inline", "Inserts preemption and event strings inline in the exported LaTeX.")
+    .action(({ logger, args, options }) => {
       let datap = args.json ? $fs.readFile(args.json, "utf8") : $gstd();
       datap.then(JSON.parse).then((sim: Schedule) => {
-        console.log(exportLatex(sim, logger)[args.artifact + ""].code);
+        console.log(exportLatex(sim, options.inline as Boolean, logger)[args.artifact + ""].code);
       });
     })
     .command("table", "Export a LaTeX table with the summary of tasks")
-    .argument("<artifact>", "Artfiact name")
+    .argument("<artifact>", "Artifact name (one of: blank, complete)")
     .argument("[JSON]", "JSON file or stdin")
     .action(({ logger, args }) => {
       let datap = args.json ? $fs.readFile(args.json, "utf8") : $gstd();
