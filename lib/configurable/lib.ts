@@ -387,11 +387,12 @@ let eventLoop = (
 
       // No events occur on the currently running task
       // CHANGED FROM: >= delta
-      if (schedstate.curr.events[0] > 0) {
+      if (schedstate.curr.events.length == 0 || schedstate.curr.events[0] > 0) {
         schedstate.curr.sum = r2(schedstate.curr.sum + delta);
 
         // See types.ts -> Task -> events for a detailed explanation of this behaviour
-        schedstate.curr.events[0] = r2(schedstate.curr.events[0] - delta);
+        if (schedstate.curr.events.length != 0)
+          schedstate.curr.events[0] = r2(schedstate.curr.events[0] - delta);
 
         // If the current task's computation time has been satisfied, exit it
         if (schedstate.curr.computation - schedstate.curr.sum <= 0) {
@@ -486,7 +487,7 @@ let printData = (plan: SimPlan) => {
   let taskevents = _.join(
     _.map(plan.tasks, (t) => {
       return [
-        `\\item task ${t.name} (\\length = ${t.computation}) arrives at ${t.arrival}, ` +
+        `\\item task ${t.name} (cmp = ${t.computation}) arrives at ${t.arrival}, ` +
           _.join(
             _.map(t.events, (e, i) => 
               i % 2 === 0 ? `runs for ${e}` : `waits for ${e}`
@@ -498,10 +499,10 @@ let printData = (plan: SimPlan) => {
     "\n"
   );
   let s = `
-  \\begin{itemize}
-  \\item Schedule data: type = ${plan.class.type}, metric = ${plan.class.metric}, ${_.map(plan.attributes, (value, key) => `${key} = ${value}`).join(', ')}
-  ${taskevents}
-  \\end{itemize}`;
+Schedule data: type = ${plan.class.type}, metric = ${plan.class.metric}, ${_.map(plan.attributes, (value, key) => `${key} = ${value}`).join(', ')}
+\\begin{itemize}
+${taskevents}
+\\end{itemize}`;
 
   let legendAbove = `Schedule data: type = ${plan.class.type}, metric = ${plan.class.metric}, ${_.map(plan.attributes, (value, key) => `${key} = ${value}`).join(', ')}`;
 
@@ -683,7 +684,7 @@ let serialiseSim = (
     runfor: simPlan.runfor,
     graphics: simPlan.graphics,
     tasks: [],
-    class: {},
+    class: origPlan.class,
     attributes: {}
   };
 

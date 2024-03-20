@@ -7,6 +7,8 @@ import { Schedule, Plan, GenericPlan, ScheduleProducer } from "./lib/types";
 import { FIFOSchedClass, RRSchedClass, SJFSchedClass, SRTFSchedClass, HRRNSchedClass, schedClassFromString } from "./lib/configurable/lib";
 import { string } from "easy-table";
 
+import _ from "lodash";
+
 type Tests = {
   cfs: Plan<any, any>[];
   configurable: GenericPlan<any>[];
@@ -23,6 +25,7 @@ let tests: Tests = {
 };
 
 let configurableGenerator = require("./lib/configurable/fixtures").configurableGenerator;
+let cfsGenerator = require("./lib/cfs/fixtures").cfsGenerator;
 
 let sims: Simulators = {
   cfs: require("./lib/cfs/lib").produceSchedule as ScheduleProducer,
@@ -36,7 +39,7 @@ let main = () => {
   program
     .name("aos-sched")
     .description("Create temporal diagrams of AOS realtime schedulers")
-    .command("dump", "Dump out examples")
+    .command("dump", "Dump out example plans")
     .argument("<sched>", "Scheduler to use", {
       validator: ["cfs", "fifo", "sjf", "srtf", "hrrn", "rr"],
     })
@@ -50,7 +53,7 @@ let main = () => {
       } else {
         // Inject the scheduler string, then return the JSON
         let plan = tests.configurable[n];
-        plan.class["type"] = args.sched;
+        plan.class["type"] = args.sched as string;
         console.log(JSON.stringify(plan));
       }
     })
@@ -85,10 +88,43 @@ let main = () => {
       validator: program.NUMBER,
       default: undefined
     })
+    .option("--lt <latency>", "Meaningful only if <sched> = \"cfs\", latency for CFS (default: 6)", {
+      validator: program.NUMBER,
+      default: undefined
+    })
+    .option("--mg <mingran>", "Meaningful only if <sched> = \"cfs\", minimum granularity for CFS (default: 0.75)", {
+      validator: program.NUMBER,
+      default: undefined
+    })
+    .option("--wgup <wakeup_granularity>", "Meaningful only if <sched> = \"cfs\", wakeup granularity for CFS (default: 1)", {
+      validator: program.NUMBER,
+      default: undefined
+    })
+    .option("--lr <lambda_range>", "Meaningful only if <sched> = \"cfs\", lower and upper bound for lambdas, must be an array of length 2 (default: (0.5, 2.5)). Values will be forced to a decimal of .5 or .0. Note that arrays must be written as \"1, 2\".", {
+      validator: program.ARRAY,
+      default: undefined
+    })
+    .option("--vrtr <initial_vrt_range>", "Meaningful only if <sched> = \"cfs\", lower and upper bound for the initial virtual runtimes, must be an array of length 2 (default: (98, 102)) Note that arrays must be written as \"1, 2\".", {
+      validator: program.ARRAY,
+      default: undefined
+    })
     .action(({ args, options }) => {
       if (args.sched === "cfs") {
-        //console.log(JSON.stringify(tests.cfs[n]));
-        throw Error("Feature not yet supported, sorry >.< !");
+        // Invoke the generator
+        let plan = cfsGenerator(
+          args.tasksCount,
+          options.tm,
+          options.rf,
+          options.lt,
+          options.mg,
+          options.wgup,
+          _.map(options.lr as Array<String>, (s) => Number(s)),
+          _.map(options.vrtr as Array<String>, (s) => Number(s)),
+          options.ms,
+          options.mei,
+          options.mat
+        );
+        console.log(JSON.stringify(plan));
       } else {
         // Invoke the generator
         let plan = configurableGenerator(
@@ -133,10 +169,11 @@ let main = () => {
     .argument("<artifact>", "Artifact name (one of: blank, complete, data)")
     .argument("[json]", "JSON file or stdin")
     .option("-i, --inline", "Inserts preemption and event strings inline in the exported LaTeX.")
+    .option("-n, --nobelow", "Removes numbers below the cells, useful when they do not add meaninful insight, such for the RR and FIFO schedulers.")
     .action(({ logger, args, options }) => {
       let datap = args.json ? $fs.readFile(args.json, "utf8") : $gstd();
       datap.then(JSON.parse).then((sim: Schedule) => {
-        console.log(exportLatex(sim, options.inline as Boolean, logger)[args.artifact + ""].code);
+        console.log(exportLatex(sim, options.inline as Boolean, options.nobelow as Boolean, logger)[args.artifact + ""].code);
       });
     })
     .command("table", "Export a LaTeX table with the summary of tasks")

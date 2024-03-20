@@ -203,6 +203,44 @@ let schedule4: GenericSimPlan = {
 
 let schedule5: GenericSimPlan = {
   timer: 0.5,
+  runfor: 6,
+  class : {},
+  attributes: {
+    quantum: 1.0
+  },
+
+  tasks: [
+    {
+      index: 0,
+      name: "$t_1$",
+      computation: 2,
+      arrival: 0,
+      events: [1.5, 2, 0.5],
+    },
+    {
+      index: 1,
+      name: "$t_2$",
+      computation: 1,
+      arrival: 1,
+      events: [1],
+    },
+    {
+      index: 2,
+      name: "$t_3$",
+      computation: 4,
+      arrival: 2,
+      events: [2, 1, 2],
+    },
+  ],
+  graphics: {
+    vspace: 1,
+    hspace: 1,
+    barheight: 0.5,
+  },
+};
+
+let schedule6: GenericSimPlan = {
+  timer: 0.5,
   runfor: 16,
   class : {},
   attributes: {
@@ -223,7 +261,13 @@ let allPlans: GenericSimPlan[] = [
   schedule3,
   schedule4,
   schedule5,
+  schedule6
 ];
+
+type GeneratedSimPlan = GenericSimPlan & {
+  // Configuration of the generator
+  genConfig : {}
+};
 
 let configurableGenerator = (
   type: string,
@@ -234,7 +278,7 @@ let configurableGenerator = (
   maxEventInterval? : number,
   maxArrivalTime? : number,
   quantum?: number
-): GenericSimPlan => {
+): GeneratedSimPlan => {
   timer = (!_.isUndefined(timer) ? max([0.1, timer]) : 0.5) as number;
   runfor = (!_.isUndefined(runfor) ? max([0.1, runfor]) : 12) as number;
   if ((runfor*10)%(timer*10) !== 0)
@@ -244,7 +288,7 @@ let configurableGenerator = (
   maxArrivalTime = (!_.isUndefined(maxArrivalTime) ? max([0.5, maxArrivalTime]) : runfor/2) as number;
   quantum = (!_.isUndefined(quantum) ? quantum : 1.5) as number;
 
-  let simPlan: GenericSimPlan = {
+  let simPlan: GeneratedSimPlan = {
     timer: timer,
     runfor: runfor,
     class : {
@@ -257,6 +301,17 @@ let configurableGenerator = (
       vspace: 1,
       hspace: 1,
       barheight: 0.5,
+    },
+
+    genConfig: {
+      type: type,
+      tasksCount: tasksCount,
+      timer: timer,
+      runfor: runfor,
+      maxSleeps: maxSleeps,
+      maxEventInterval: maxEventInterval,
+      maxArrivalTime: maxArrivalTime,
+      quantum: quantum
     }
   };
   
