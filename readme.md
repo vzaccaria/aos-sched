@@ -72,4 +72,4 @@ The resulting latex file is a Tikz picture that when compiled and exported to pn
 # Internal data structures
 
 ![](Images/readme%202024-03-31%2011.46.50.excalidraw.png)
-%%[🖋 Edit in Excalidraw](Images/readme%202024-03-31%2011.46.50.excalidraw.md)%%
+[☆](Images/readme%202024-03-31%2011.46.50.excalidraw.md)
