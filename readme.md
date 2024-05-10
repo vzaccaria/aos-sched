@@ -1,30 +1,24 @@
 
 # Introduction
 
-<div align="center">
-  <table>
-    <tr>
-      <td align="center">
-        <img src="./static/wordart_orange.png" width=500px>
-      </td>
-      <td align="center">
-        <img src="./static/flow.png" width=250px>
-      </td>
-    </tr>
-  </table>
+<div>
+  <img align="right" height="280" src="./static/flow.png">
+
+  This is a small CLI tool written for the Advanced Operating Systems course to create realtime schedule diagrams from schedule plans. It provides several commands to simulate and print scheduling simulations. At the moment, the following schedulers are implemented:
+
+  - CFS (Linux Completely Fair Scheduler)
+  - FIFO (First-In, First-Out)
+  - SJF (Shortest Job First)
+  - SRTF (Shortest Remaining Time First)
+  - RR (Round-Robin)
+  - HRRN (Highest Response Ratio Next)
 </div>
 
-This is a small CLI tool written for the Advanced Operating Systems course to create realtime schedule diagrams from schedule plans. It provides several commands to simulate and print scheduling simulations. At the moment, the following schedulers are implemented:
-
-- CFS (Linux CFS)
-- FIFO (First-In, First-Out)
-- SJF (Shortest Job First)
-- SRTF (Shortest Remaining Time First)
-- RR (Round-Robin)
-- HRRN (Highest Response Ratio Next)
-
 # Installation
-To install the package and use it properly, you need to link it as a Bun package, so that Bun knows where the package is and of its existence.
+
+Installation and usage rely on the Bun JavaScript runtime and package manager, thus, before proceeding, ensure to have access to Bun. The [Bun documentation](https://bun.sh/docs/installation) should otherwise suffice in guiding you through Bun's installation.
+
+Then, to install this tool and use it properly, you need to link it as a Bun package, making Bun aware of its existence and location.
 
 To install, run the following:
 ```
@@ -76,6 +70,8 @@ The available commands are:
         },
         ...
     ```
+
+<!-- <img align="right" height="250" src="./static/flow_generator.png"> -->
 
 2. `gen`: This command is used to randomly generate a new schedule plan. Reasonable default values for the generator are present, but can be chosen via the command's options. As the `dump` command, it returns the JSON representation of the specified schedule. Meaningful options vary accordingly to the chosen scheduler, refer to `gen -h` for details.
 
@@ -236,6 +232,6 @@ bunx aos-sched simulate < tmp.json | bunx aos-sched table complete
 
 # Additional Material
 
-A full example of how this tool's output can be incorporated in a LaTeX document is present in [example.tex](./example.tex).
+A full example of how this tool's output can be incorporated in a LaTeX document can be found in [this demonstrative Overleaf project](https://www.overleaf.com/read/mhwcsxbhjgbv#c3b8de).
 
-A presentation given on the recent improvements and changes made to this simulator is available as [Ronzani_Sassi_presentation.pdf](./static/Ronzani_Sassi_presentation.pdf)
+A presentation given on the recent improvements and changes made to this simulator is available as [Ronzani_Sassi_presentation.pdf](./static/Ronzani_Sassi_presentation.pdf).
