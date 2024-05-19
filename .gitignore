@@ -3,3 +3,6 @@ package-lock.json
 /output.pdf
 example.pdf
 
+node_modules/
+tikz2pdf/
+bun.lockb

@@ -1,46 +1,83 @@
-import { CFSPlan, CFSPlannedTask } from "./lib";
+import { SimPlan, GenericSimPlan, PlannedTask, FIFOSchedClass, SJFSchedClass, SRTFSchedClass, RRSchedClass, HRRNSchedClass } from "./lib";
 
-import _, {max, min} from "lodash";
+import _, { max } from "lodash";
 
-// Test for arrival time
-let schedule0: CFSPlan = {
+/*
+IMPORTANT:
+There are two ways a task can end:
+- it reaches its last event and such event is a permanent sleep (no subsequent wakeup)
+- it finishes its required computation time
+
+Events alternate, the first is a sleep, then a wakeup, then sleep, ...
+*/
+
+let schedule0: GenericSimPlan = {
   timer: 0.5,
   runfor: 8,
-  // While moving "latency", "mingran", and "wgup" to attributes is feasible
-  // "class" is maintained like this for legacy reasons.
-  class: {
-    type: "cfs",
-    latency: 6.0,
-    mingran: 0.75,
-    wgup: 1,
+  class : {},
+  attributes: {
+    quantum: 1.5
   },
-  attributes: {},
 
   tasks: [
     {
       index: 0,
       name: "$t_1$",
-      lambda: 1,
-      arrival: 1,
+      computation: 8,
+      arrival: 0,
       events: [8],
-      // override vrt
-      vrt: 100.0,
     },
     {
       index: 1,
       name: "$t_2$",
-      lambda: 1,
+      computation: 8,
+      arrival: 0,
+      events: [8],
+    },
+    {
+      index: 2,
+      name: "$t_3$",
+      computation: 8,
+      arrival: 0,
+      events: [8],
+    },
+  ],
+  graphics: {
+    vspace: 1,
+    hspace: 1,
+    barheight: 0.5,
+  },
+};
+
+let schedule1: GenericSimPlan = {
+  timer: 1,
+  runfor: 16,
+  class : {},
+  attributes: {
+    quantum: 1.5
+  },
+
+  tasks: [
+    {
+      index: 0,
+      name: "$t_1$",
+      computation: 1,
+      arrival: 0,
+      events: [8],
+    },
+    {
+      index: 1,
+      name: "$t_2$",
+      computation: 8,
       arrival: 2,
-      events: [8],
-      vrt: 100.5,
+      events: [2, 1, 3],
     },
     {
       index: 2,
       name: "$t_3$",
-      lambda: 1,
-      arrival: 0,
-      events: [8],
-      vrt: 101.0,
+      computation: 8,
+      arrival: 4,
+      events: [2],
     },
   ],
   graphics: {
@@ -50,87 +87,35 @@ let schedule0: CFSPlan = {
   },
 };
 
-let schedule1: CFSPlan = {
-  timer: 0.5,
-  runfor: 8,
-  class: {
-    type: "cfs",
-    latency: 6.0,
-    mingran: 0.75,
-    wgup: 1,
-  },
-  attributes: {},
-
-  tasks: [
-    {
-      index: 0,
-      name: "$t_1$",
-      lambda: 1,
-      arrival: 0,
-      events: [8],
-      // override vrt
-      vrt: 100.0,
-    },
-    {
-      index: 1,
-      name: "$t_2$",
-      lambda: 1.5,
-      arrival: 0,
-      events: [8],
-      vrt: 100.5,
-    },
-    {
-      index: 2,
-      name: "$t_3$",
-      lambda: 0.5,
-      arrival: 0,
-      events: [8],
-      vrt: 101.0,
-    },
-  ],
-  graphics: {
-    vspace: 1,
-    hspace: 1,
-    barheight: 0.5,
-  },
-};
-
-let schedule2: CFSPlan = {
+let schedule2: GenericSimPlan = {
   timer: 0.5,
   runfor: 12,
-  class: {
-    type: "cfs",
-    latency: 6.0,
-    mingran: 0.75,
-    wgup: 1,
+  class : {},
+  attributes: {
+    quantum: 1.5
   },
-  attributes: {},
 
   tasks: [
     {
       index: 0,
       name: "$t_1$",
-      lambda: 1,
+      computation: 9,
       arrival: 0,
       events: [1, 5, 8],
-      // override vrt
-      vrt: 100.0,
     },
     {
       index: 1,
       name: "$t_2$",
-      lambda: 1,
+      computation: 20,
       arrival: 0,
       events: [14],
-      vrt: 100.5,
     },
     {
       index: 2,
       name: "$t_3$",
-      lambda: 1,
+      computation: 8,
       arrival: 0,
-      events: [3, 1, 10],
-      vrt: 101.0,
+      events: [3, 2, 10],
     },
   ],
   graphics: {
@@ -140,42 +125,35 @@ let schedule2: CFSPlan = {
   },
 };
 
-let schedule3: CFSPlan = {
+let schedule3: GenericSimPlan = {
   timer: 0.5,
   runfor: 24,
-  class: {
-    type: "cfs",
-    latency: 6.0,
-    mingran: 0.75,
-    wgup: 1,
+  class : {},
+  attributes: {
+    quantum: 1.5
   },
-  attributes: {},
 
   tasks: [
     {
       index: 0,
       name: "$t_1$",
-      lambda: 1,
+      computation: 16,
       arrival: 0,
       events: [1, 2, 3, 4, 8],
-      // override vrt
-      vrt: 100.0,
     },
     {
       index: 1,
       name: "$t_2$",
-      lambda: 1,
+      computation: 16,
       arrival: 0,
       events: [2, 2, 2, 3, 1],
-      vrt: 100.5,
     },
     {
       index: 2,
       name: "$t_3$",
-      lambda: 1,
+      computation: 16,
       arrival: 0,
       events: [3, 1, 2, 3, 1],
-      vrt: 101.0,
     },
   ],
   graphics: {
@@ -185,42 +163,35 @@ let schedule3: CFSPlan = {
   },
 };
 
-// Test for mingran 1
-let schedule4: CFSPlan = {
+let schedule4: GenericSimPlan = {
   timer: 0.5,
   runfor: 12,
-  class: {
-    type: "cfs",
-    latency: 6.0,
-    mingran: 4,
-    wgup: 1,
+  class : {},
+  attributes: {
+    quantum: 1.5
   },
-  attributes: {},
 
   tasks: [
     {
       index: 0,
       name: "$t_1$",
-      lambda: 1,
+      computation: 4,
       arrival: 0,
       events: [1, 5, 8],
-      vrt: 100.0,
     },
     {
       index: 1,
       name: "$t_2$",
-      lambda: 1,
+      computation: 4,
       arrival: 0,
-      events: [14],
-      vrt: 100.5,
+      events: [3.5],
     },
     {
       index: 2,
       name: "$t_3$",
-      lambda: 1,
-      arrival: 0,
-      events: [3, 1, 10],
-      vrt: 101.0,
+      computation: 1,
+      arrival: 2,
+      events: [2, 1, 1],
     },
   ],
   graphics: {
@@ -230,42 +201,35 @@ let schedule4: CFSPlan = {
   },
 };
 
-// Test for mingran 2
-let schedule5: CFSPlan = {
+let schedule5: GenericSimPlan = {
   timer: 0.5,
-  runfor: 16,
-  class: {
-    type: "cfs",
-    latency: 6.0,
-    mingran: 1.5,
-    wgup: 1,
+  runfor: 6,
+  class : {},
+  attributes: {
+    quantum: 1.0
   },
-  attributes: {},
 
   tasks: [
     {
       index: 0,
       name: "$t_1$",
-      lambda: 1,
+      computation: 2,
       arrival: 0,
-      events: [14],
-      vrt: 100.0,
+      events: [1.5, 2, 0.5],
     },
     {
       index: 1,
       name: "$t_2$",
-      lambda: 1,
-      arrival: 0,
-      events: [14],
-      vrt: 100.0,
+      computation: 1,
+      arrival: 1,
+      events: [1],
     },
     {
       index: 2,
       name: "$t_3$",
-      lambda: 1,
-      arrival: 0,
-      events: [1, 1, 1, 1, 2, 2, 2, 2],
-      vrt: 100.0,
+      computation: 4,
+      arrival: 2,
+      events: [2, 1, 2],
     },
   ],
   graphics: {
@@ -275,72 +239,64 @@ let schedule5: CFSPlan = {
   },
 };
 
-let schedule6: CFSPlan = {
+let schedule6: GenericSimPlan = {
   timer: 0.5,
   runfor: 16,
-  class: { type: "cfs", latency: 6.0, mingran: 0.75, wgup: 1 },
-  attributes: {},
+  class : {},
+  attributes: {
+    quantum: 1.5
+  },
   tasks: [
-    { index: 0, name: "R", lambda: 4, arrival: 0, events: [8], vrt: 0.0 },
-    { index: 1, name: "S", lambda: 1, arrival: 0, events: [8], vrt: 0.0 },
-    { index: 2, name: "T", lambda: 1, arrival: 0, events: [8], vrt: 0.0 },
+    { index: 0, name: "R", computation: 8, arrival: 0, events: [8] },
+    { index: 1, name: "S", computation: 8, arrival: 0, events: [8] },
+    { index: 2, name: "T", computation: 8, arrival: 0, events: [8] },
   ],
   graphics: { vspace: 1, hspace: 1, barheight: 0.5 },
 };
 
-let plans: CFSPlan[] = [
+let allPlans: GenericSimPlan[] = [
   schedule0,
   schedule1,
   schedule2,
   schedule3,
   schedule4,
   schedule5,
-  schedule6,
+  schedule6
 ];
 
-type GeneratedCFSPlan = CFSPlan & {
+type GeneratedSimPlan = GenericSimPlan & {
   // Configuration of the generator
   genConfig : {}
 };
 
-let cfsGenerator = (
+let configurableGenerator = (
+  type: string,
   tasksCount: number,
   timer?: number,
   runfor?: number,
-  latency?: number,
-  mingran?: number,
-  wgup?: number,
-  lambdaRange? : Array<number>,
-  initialVrtRange?: Array<number>,
   maxSleeps?: number,
   minEventInterval? : number,
   maxEventInterval? : number,
   maxArrivalTime? : number,
-): GeneratedCFSPlan => {
+  quantum?: number
+): GeneratedSimPlan => {
   timer = (!_.isUndefined(timer) ? max([0.1, timer]) : 0.5) as number;
   runfor = (!_.isUndefined(runfor) ? max([0.1, runfor]) : 12) as number;
   if ((runfor*10)%(timer*10) !== 0)
     throw Error("The value of \"runfor\" must be a multiple of \"timer\", also, limit their precision to one decimal points!");
-  latency = (!_.isUndefined(latency) ? max([0.1, latency]) : 6.0) as number;
-  mingran = (!_.isUndefined(mingran) ? max([0, mingran]) : 0.75) as number;
-  wgup = (!_.isUndefined(wgup) ? max([0.1, wgup]) : 1) as number;
-  lambdaRange = (!_.isUndefined(lambdaRange) && lambdaRange.length == 2 && lambdaRange[0] <= lambdaRange[1] ? [max([0.1, lambdaRange[0]]), max([0.1, lambdaRange[1]])] : [0.5, 2.5]) as Array<number>;
-  initialVrtRange = (!_.isUndefined(initialVrtRange) && initialVrtRange.length == 2 && initialVrtRange[0] <= initialVrtRange[1] ? [max([0.1, initialVrtRange[0]]), max([0.1, initialVrtRange[1]])] : [98, 102]) as Array<number>;
   maxSleeps = (!_.isUndefined(maxSleeps) ? max([1, maxSleeps]) : 2) as number;
   minEventInterval = (!_.isUndefined(minEventInterval) ? max([0.5, minEventInterval]) : timer) as number;
   maxEventInterval = (!_.isUndefined(maxEventInterval) ? max([0.5, maxEventInterval]) : 4) as number;
   if (minEventInterval > maxEventInterval)
     throw Error("The value of \"min_event_interval\" must be a equal or less than \"max_event_interval\"!");
   maxArrivalTime = (!_.isUndefined(maxArrivalTime) ? max([0.5, maxArrivalTime]) : runfor/2) as number;
+  quantum = (!_.isUndefined(quantum) ? quantum : 1.5) as number;
 
-  let simPlan: GeneratedCFSPlan = {
+  let simPlan: GeneratedSimPlan = {
     timer: timer,
     runfor: runfor,
     class : {
-      type: "cfs",
-      latency: latency,
-      mingran: mingran,
-      wgup: wgup
+      type: type
     },
     attributes: {},
 
@@ -352,20 +308,20 @@ let cfsGenerator = (
     },
 
     genConfig: {
+      type: type,
       tasksCount: tasksCount,
       timer: timer,
       runfor: runfor,
-      latency: latency,
-      mingran: mingran,
-      wgup: wgup,
-      lambdaRange: lambdaRange,
-      initialVrtRange: initialVrtRange,
       maxSleeps: maxSleeps,
       maxEventInterval: maxEventInterval,
-      maxArrivalTime: maxArrivalTime
+      maxArrivalTime: maxArrivalTime,
+      quantum: quantum
     }
   };
   
+  if(type === "rr")
+    simPlan.attributes["quantum"] = quantum;
+
   let sampleWrapper = (arr: number[]): number => {
     let res = _.sample(arr);
     return res != undefined ? res : timer;
@@ -373,14 +329,13 @@ let cfsGenerator = (
 
   for(let i = 0; i < tasksCount; i++) {
     let intervals = _.range(timer, maxArrivalTime + timer, timer);
-    let task: CFSPlannedTask = {
+    let task: PlannedTask = {
       index: i,
       name: `$t_${i+1}$`,
-      lambda: _.random(lambdaRange[0]*2, lambdaRange[1]*2)/2,
-      arrival: sampleWrapper(intervals),
       // The events will determine the length of the task
-      events: [],
-      vrt: _.random(initialVrtRange[0]*10, initialVrtRange[1]*10)/10
+      computation: runfor,
+      arrival: sampleWrapper(intervals),
+      events: []
     };
 
     let eventsCount = _.random(0, maxSleeps)*2 + 1;
@@ -394,4 +349,4 @@ let cfsGenerator = (
   return simPlan;
 }
 
-export { plans, cfsGenerator };
+export { allPlans, configurableGenerator };
